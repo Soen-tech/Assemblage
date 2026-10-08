@@ -1,0 +1,49 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/payfast-itn.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/send-notification.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/send-club-announcement.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/payfast-itn",
+      "dest": "/api/payfast-itn.ts"
+    },
+    {
+      "src": "/api/send-notification",
+      "dest": "/api/send-notification.ts"
+    },
+    {
+      "src": "/api/send-club-announcement",
+      "dest": "/api/send-club-announcement.ts"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

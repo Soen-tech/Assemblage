@@ -1,0 +1,13 @@
+{
+  "name": "PROOF",
+  "description": "Premium whisky club platform with AI bottle recognition and curated tasting guides.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI Bottle Recognition",
+    "Tasting Journal",
+    "Expert Masterclasses",
+    "Whisky Boutique"
+  ]
+}
