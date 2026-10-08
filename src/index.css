@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", serif;
+  --font-sans: "Hanken Grotesk", sans-serif;
+
+  --color-surface: #131313;
+  --color-surface-dim: #131313;
+  --color-surface-bright: #393939;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #dac2b2;
+  
+  --color-primary: #ffb77d;
+  --color-on-primary: #4d2600;
+  --color-primary-container: #d27d2d;
+  
+  --color-secondary: #e9c176;
+  --color-on-secondary: #412d00;
+  
+  --color-amber-oak: #2B1B17;
+  --color-charcoal: #121212;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+}
+
+.glass {
+  @apply backdrop-blur-xl bg-black/40 border border-white/10;
+}
+
+.animate-ping-slow {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.text-headline-xl {
+  @apply font-serif text-4xl font-semibold leading-tight tracking-tight md:text-5xl;
+}
+
+.text-headline-lg {
+  @apply font-serif text-3xl font-medium leading-tight;
+}
+
+.text-headline-md {
+  @apply font-serif text-2xl font-medium leading-snug;
+}
+
+.text-body-lg {
+  @apply font-sans text-lg leading-relaxed;
+}
+
+.text-body-md {
+  @apply font-sans text-base leading-relaxed;
+}
+
+.text-label-md {
+  @apply font-sans text-sm font-semibold tracking-wider uppercase;
+}
+
