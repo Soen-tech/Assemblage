@@ -5,27 +5,34 @@
   --font-serif: "EB Garamond", serif;
   --font-sans: "Hanken Grotesk", sans-serif;
 
-  --color-surface: #131313;
-  --color-surface-dim: #131313;
-  --color-surface-bright: #393939;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-container: #201f1f;
-  --color-surface-container-high: #2a2a2a;
-  --color-surface-container-highest: #353534;
+  /* Background: White */
+  --color-surface: #ffffff;
+  --color-surface-dim: #fbfdfc;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8faf8;
+  --color-surface-container: #f1f5f2;
+  --color-surface-container-high: #e3eae5;
+  --color-surface-container-highest: #d5ded8;
   
-  --color-on-surface: #e5e2e1;
-  --color-on-surface-variant: #dac2b2;
+  --color-on-surface: #111d16;
+  --color-on-surface-variant: #485950;
   
-  --color-primary: #ffb77d;
-  --color-on-primary: #4d2600;
-  --color-primary-container: #d27d2d;
+  /* Accent colour: Gold */
+  --color-primary: #C5A059;
+  --color-on-primary: #123826;
+  --color-primary-container: #FAF4E5;
+  --color-accent: #C5A059;
+  --color-gold: #C5A059;
   
-  --color-secondary: #e9c176;
-  --color-on-secondary: #412d00;
+  /* Secondary colour: Dark Green */
+  --color-secondary: #123826;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #E3EDE7;
+  --color-dark-green: #123826;
   
-  --color-amber-oak: #2B1B17;
-  --color-charcoal: #121212;
+  --color-amber-oak: #8C6D3B;
+  --color-charcoal: #111d16;
 }
 
 @layer base {
@@ -35,7 +42,7 @@
 }
 
 .glass {
-  @apply backdrop-blur-xl bg-black/40 border border-white/10;
+  @apply backdrop-blur-xl bg-white/90 border border-[#123826]/10 text-on-surface shadow-sm;
 }
 
 .animate-ping-slow {

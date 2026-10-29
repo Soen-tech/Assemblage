@@ -9,26 +9,26 @@ export function WhiskyCard({ whisky, onClick }: { whisky: Whisky; onClick?: () =
       whileHover={{ y: -5 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className="group relative flex-shrink-0 w-64 bg-surface-container rounded-3xl overflow-hidden border border-white/5 cursor-pointer"
+      className="group relative flex-shrink-0 w-64 bg-surface rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md hover:border-primary/40 cursor-pointer transition-all"
       id={`whisky-card-${whisky.id}`}
     >
-      <div className="aspect-[4/5] relative overflow-hidden">
+      <div className="aspect-[4/5] relative overflow-hidden bg-stone-100">
         <img 
           src={whisky.image || undefined} 
           alt={whisky.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-2 py-1 rounded-md border border-white/10">
-          <span className="text-[10px] font-bold text-secondary uppercase tracking-wider">{whisky.region}</span>
+        <div className="absolute top-4 right-4 bg-[#123826]/85 backdrop-blur-md px-2.5 py-1 rounded-md border border-primary/20 shadow-sm">
+          <span className="text-[10px] font-bold text-primary uppercase tracking-wider">{whisky.region}</span>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent opacity-80" />
       </div>
       
       <div className="p-5 relative">
-        <h3 className="font-serif text-lg font-medium text-white group-hover:text-primary transition-colors leading-tight">
+        <h3 className="font-serif text-lg font-semibold text-secondary group-hover:text-primary transition-colors leading-tight">
           {whisky.name}
         </h3>
-        <p className="text-sm text-on-surface-variant line-clamp-1 mt-1 mb-4 leading-relaxed italic opacity-80">
+        <p className="text-sm text-on-surface-variant line-clamp-1 mt-1 mb-4 leading-relaxed italic opacity-85">
           {whisky.description}
         </p>
         
@@ -36,7 +36,7 @@ export function WhiskyCard({ whisky, onClick }: { whisky: Whisky; onClick?: () =
           {whisky.tastingNotes.slice(0, 3).map((note) => (
             <span 
               key={note}
-              className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-on-surface/60 uppercase tracking-tighter"
+              className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary/5 border border-secondary/15 text-secondary uppercase tracking-tighter"
             >
               {note}
             </span>
@@ -54,7 +54,7 @@ export function EventCard({ event, featured = false, onClick }: { event: ClubEve
       whileTap={{ scale: 0.99 }}
       onClick={onClick}
       className={cn(
-        "relative rounded-3xl overflow-hidden border border-white/5 cursor-pointer group",
+        "relative rounded-3xl overflow-hidden border border-stone-200/60 shadow-md cursor-pointer group",
         featured ? "h-96" : "h-64"
       )}
       id={`event-card-${event.id}`}
@@ -64,11 +64,11 @@ export function EventCard({ event, featured = false, onClick }: { event: ClubEve
         alt={event.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
       
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <div className="mb-0.5">
-          <span className="text-[10px] font-semibold text-primary/60 uppercase tracking-widest leading-none">
+          <span className="text-[10px] font-extrabold text-primary uppercase tracking-widest leading-none">
             {event.category}
           </span>
         </div>
@@ -78,10 +78,10 @@ export function EventCard({ event, featured = false, onClick }: { event: ClubEve
         </h3>
         
         <div className="flex items-center justify-between">
-          <div className="text-[10px] text-white/40 uppercase tracking-[0.12em] font-bold">
+          <div className="text-[10px] text-white/70 uppercase tracking-[0.12em] font-bold">
             <p>{event.date} • {event.location}</p>
           </div>
-          <button className="bg-primary hover:bg-primary/90 text-on-primary px-5 py-2.5 rounded-xl text-[10px] font-extrabold transition-all active:scale-95 leading-none uppercase tracking-widest">
+          <button className="bg-primary hover:bg-primary/90 text-secondary px-5 py-2.5 rounded-xl text-[10px] font-extrabold transition-all active:scale-95 leading-none uppercase tracking-widest shadow-md">
             {event.price}
           </button>
         </div>

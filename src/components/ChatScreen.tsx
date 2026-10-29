@@ -91,7 +91,7 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
 
   return (
     <div className="flex-1 flex flex-col h-full overflow-hidden">
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 pt-6 pb-4 md:scrollbar-thin scrollbar-thumb-white/10">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-6 pt-6 pb-4 md:scrollbar-thin scrollbar-thumb-stone-200">
         <div className="flex flex-col gap-6">
           <AnimatePresence mode="popLayout">
             {messages.map((msg) => (
@@ -105,29 +105,36 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
                 )}
               >
                 <div className={cn(
-                  "w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-white border",
-                  msg.role === 'assistant' ? "bg-secondary/20 border-secondary/30" : "bg-primary/20 border-primary/30"
+                  "w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border shadow-xs",
+                  msg.role === 'assistant' ? "bg-secondary/10 border-secondary/20 text-secondary" : "bg-primary text-secondary border-primary/30"
                 )}>
-                  {msg.role === 'assistant' ? <MessageSquare size={20} className="text-secondary" /> : <UserIcon size={20} className="text-primary" />}
+                  {msg.role === 'assistant' ? <MessageSquare size={18} className="text-secondary" /> : <UserIcon size={18} className="text-secondary" />}
                 </div>
                 
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2 px-1">
-                    <span className="text-[10px] font-bold text-white/50 tracking-widest uppercase">
-                      {msg.role === 'assistant' ? 'STEVE' : 'CONNOISSEUR'}
+                <div className="flex flex-col gap-1.5">
+                  <div className={cn("flex items-center gap-2 px-1", msg.role === 'user' ? "justify-end" : "justify-start")}>
+                    <span className="text-[10px] font-bold text-secondary/70 tracking-widest uppercase font-mono">
+                      {msg.role === 'assistant' ? 'CONCIERGE' : 'MEMBER'}
                     </span>
                   </div>
                   <div className={cn(
-                    "p-4 rounded-2xl text-sm leading-relaxed",
-                    msg.role === 'assistant' ? "bg-surface-container-high border border-white/5" : "bg-primary/20 border border-primary/30 text-white"
+                    "p-4 rounded-2xl text-sm leading-relaxed shadow-xs",
+                    msg.role === 'assistant' 
+                      ? "bg-surface-container border border-stone-200/80 text-on-surface" 
+                      : "bg-secondary text-white border border-secondary"
                   )}>
-                    <div className="prose prose-invert prose-p:leading-relaxed prose-strong:text-primary max-w-none">
+                    <div className={cn(
+                      "prose max-w-none leading-relaxed",
+                      msg.role === 'assistant' 
+                        ? "prose-stone prose-strong:text-secondary prose-p:text-on-surface" 
+                        : "text-white prose-invert prose-p:text-white prose-strong:text-primary"
+                    )}>
                       <ReactMarkdown>
                         {msg.content}
                       </ReactMarkdown>
                     </div>
                   </div>
-                  <span className="text-[9px] font-bold text-white/30 uppercase px-1">
+                  <span className={cn("text-[9px] font-bold text-stone-400 uppercase px-1 font-mono", msg.role === 'user' ? "text-right" : "text-left")}>
                     {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
@@ -137,13 +144,13 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
         </div>
       </div>
 
-      <div className="px-6 py-6 border-t border-white/5 bg-surface-container-lowest/50 backdrop-blur-md pb-32">
+      <div className="px-6 py-6 border-t border-stone-200/80 bg-white/90 backdrop-blur-md pb-32">
         <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-none">
           {["Recommend a Peaty Scotch", "Explain \"Angels' Share\"", "Gift ideas for $200"].map((hint) => (
             <button 
               key={hint}
               onClick={() => setInput(hint)}
-              className="flex-shrink-0 px-4 py-2 rounded-full glass text-xs font-bold text-on-surface-variant hover:text-white transition-colors"
+              className="flex-shrink-0 px-4 py-2 rounded-full bg-surface-container border border-stone-200/80 text-xs font-bold text-secondary hover:bg-stone-100 transition-colors cursor-pointer shadow-xs"
             >
               {hint}
             </button>
@@ -152,7 +159,7 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
         
         <div className="relative group">
           <div className="absolute left-4 top-1/2 -translate-y-1/2">
-            <button className="text-white/40 hover:text-primary transition-colors">
+            <button className="text-stone-400 hover:text-secondary transition-colors cursor-pointer">
               <Plus size={20} strokeWidth={2.5} />
             </button>
           </div>
@@ -162,18 +169,18 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Ask your Concierge..."
-            className="w-full bg-surface-container-high h-14 pl-12 pr-14 rounded-2xl border border-white/5 outline-none focus:border-primary/50 transition-all text-sm group-hover:bg-surface-container-highest"
+            className="w-full bg-surface-container h-14 pl-12 pr-14 rounded-2xl border border-stone-200/80 outline-none text-on-surface focus:border-primary/70 transition-all text-sm shadow-xs"
           />
           <button 
             onClick={handleSend}
             disabled={isLoading}
             className={cn(
-              "absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl flex items-center justify-center transition-all active:scale-90",
-              isLoading ? "bg-white/5 cursor-not-allowed" : "bg-primary/20 hover:bg-primary/30 text-primary"
+              "absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl flex items-center justify-center transition-all active:scale-90 cursor-pointer shadow-xs",
+              isLoading ? "bg-stone-200 cursor-not-allowed" : "bg-primary text-secondary hover:bg-primary/90"
             )}
           >
             {isLoading ? (
-              <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-secondary border-t-transparent rounded-full animate-spin" />
             ) : (
               <Send size={18} strokeWidth={2.5} />
             )}

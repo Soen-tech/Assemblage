@@ -521,24 +521,24 @@ export default function AdminSection({
               {clubName || 'Control Center'}
             </span>
             {clubId && (
-              <span className="text-[9px] text-[#d8c39b] font-mono border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-md cursor-help select-all active:scale-95 transition-transform" title="Click to select & copy Club ID for new members">
+              <span className="text-[9px] text-secondary font-mono border border-secondary/20 bg-secondary/5 px-2 py-0.5 rounded-md cursor-help select-all active:scale-95 transition-transform" title="Click to select & copy Club ID for new members">
                 Club ID: {clubId}
               </span>
             )}
           </div>
-          <h2 className="text-4xl font-serif text-white">Management Vault</h2>
+          <h2 className="text-4xl font-serif text-secondary font-semibold">Management Vault</h2>
         </div>
       </header>
 
       <div className={cn(
-        "grid gap-2 mb-8 bg-white/5 p-1 rounded-2xl border border-white/5",
+        "grid gap-2 mb-8 bg-stone-100 p-1.5 rounded-2xl border border-stone-200",
         isMasterAdmin ? "grid-cols-2 md:grid-cols-5" : "grid-cols-3"
       )}>
         <button 
           onClick={() => setActiveTab('events')}
           className={cn(
-            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-            activeTab === 'events' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+            activeTab === 'events' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
           )}
         >
           <Calendar size={14} /> EVENTS
@@ -546,8 +546,8 @@ export default function AdminSection({
         <button 
           onClick={() => setActiveTab('boutique')}
           className={cn(
-            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-            activeTab === 'boutique' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+            activeTab === 'boutique' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
           )}
         >
           <ShoppingBag size={14} /> BOUTIQUE
@@ -555,8 +555,8 @@ export default function AdminSection({
         <button 
           onClick={() => setActiveTab('tickets')}
           className={cn(
-            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-            activeTab === 'tickets' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+            activeTab === 'tickets' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
           )}
         >
           <Ticket size={14} /> TICKETS
@@ -564,8 +564,8 @@ export default function AdminSection({
         <button 
           onClick={() => setActiveTab('orders')}
           className={cn(
-            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-            activeTab === 'orders' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+            "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+            activeTab === 'orders' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
           )}
         >
           <ShoppingBag size={14} /> ORDERS
@@ -575,8 +575,8 @@ export default function AdminSection({
             <button 
               onClick={() => setActiveTab('clubs')}
               className={cn(
-                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-                activeTab === 'clubs' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+                activeTab === 'clubs' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
               )}
             >
               <Database size={14} /> CLUBS
@@ -584,8 +584,8 @@ export default function AdminSection({
             <button 
               onClick={() => setActiveTab('users')}
               className={cn(
-                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-                activeTab === 'users' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+                activeTab === 'users' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
               )}
             >
               <Users size={14} /> USERS
@@ -593,8 +593,8 @@ export default function AdminSection({
             <button 
               onClick={() => setActiveTab('promo')}
               className={cn(
-                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all",
-                activeTab === 'promo' ? "bg-primary text-black" : "text-white/40 hover:text-white"
+                "h-12 rounded-xl flex items-center justify-center gap-2 font-bold text-[10px] transition-all cursor-pointer",
+                activeTab === 'promo' ? "bg-secondary text-primary shadow-xs" : "text-stone-600 hover:text-secondary hover:bg-white/60"
               )}
             >
               <Ticket size={14} /> PROMO CODES
@@ -604,13 +604,13 @@ export default function AdminSection({
       </div>
 
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-serif text-white capitalize">
+        <h3 className="text-xl font-serif text-secondary font-semibold capitalize">
           {activeTab === 'tickets' ? 'Participant Tickets' : activeTab === 'orders' ? 'Boutique Orders' : activeTab === 'promo' ? 'Promo Codes' : `${activeTab} Listings`}
         </h3>
         {activeTab !== 'users' && activeTab !== 'tickets' && activeTab !== 'orders' && (
           <button 
             onClick={() => setEditingItem({})}
-            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all"
+            className="flex items-center gap-2 bg-secondary hover:bg-secondary/90 text-primary px-4 py-2.5 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer"
           >
             <Plus size={16} /> ADD NEW
           </button>
@@ -625,12 +625,12 @@ export default function AdminSection({
           </div>
         ) : activeTab === 'events' ? (
           events.map(event => (
-            <div key={event.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-white/10 transition-colors">
+            <div key={event.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-primary/40 shadow-xs transition-all">
               <div className="flex items-center gap-4">
                 <img src={event.image || 'https://images.unsplash.com/photo-1527281480658-198cb28a1db0?auto=format&fit=crop&q=80&w=200'} className="w-16 h-16 object-cover rounded-xl" alt="" />
                 <div>
-                  <h4 className="font-serif text-white leading-tight">{event.title}</h4>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest mt-1">{event.date} • {event.location}</p>
+                  <h4 className="font-serif text-secondary font-semibold leading-tight">{event.title}</h4>
+                  <p className="text-[10px] text-stone-500 uppercase tracking-widest mt-1">{event.date} • {event.location}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 self-end sm:self-auto">
@@ -638,17 +638,17 @@ export default function AdminSection({
                   onClick={() => handleGenerateInvite(event)}
                   disabled={generatingInviteId === event.id}
                   className={cn(
-                    "px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap",
+                    "px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer",
                     copiedLinkEventId === event.id
-                      ? "bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-extrabold"
-                      : "bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary hover:border-primary/45"
+                      ? "bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 font-extrabold"
+                      : "bg-primary/10 hover:bg-primary/20 border border-primary/20 text-secondary hover:border-primary/45"
                   )}
                   title="Generate invitation code & dynamic route"
                 >
                   {generatingInviteId === event.id ? (
                     <Loader2 size={12} className="animate-spin text-primary" />
                   ) : copiedLinkEventId === event.id ? (
-                    <Check size={12} className="text-emerald-400" />
+                    <Check size={12} className="text-emerald-600" />
                   ) : (
                     <Share2 size={12} className="text-primary" />
                   )}
@@ -658,10 +658,10 @@ export default function AdminSection({
                 </button>
 
                 <div className="flex gap-1">
-                  <button onClick={() => handleEdit(event)} className="p-2 text-white/40 hover:text-primary transition-colors" title="Edit Event Details">
+                  <button onClick={() => handleEdit(event)} className="p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer" title="Edit Event Details">
                     <Edit2 size={16} />
                   </button>
-                  <button onClick={() => confirmDelete(event.id)} className="p-2 text-white/40 hover:text-red-400 transition-colors" title="Remove Event">
+                  <button onClick={() => confirmDelete(event.id)} className="p-2 text-stone-400 hover:text-red-500 transition-colors cursor-pointer" title="Remove Event">
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -670,9 +670,9 @@ export default function AdminSection({
           ))
         ) : activeTab === 'boutique' ? (
           products.map(product => (
-            <div key={product.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-white/10 transition-colors">
+            <div key={product.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-primary/40 shadow-xs transition-all">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-primary overflow-hidden shrink-0">
+                <div className="w-16 h-16 bg-secondary/5 border border-secondary/15 rounded-xl flex items-center justify-center text-secondary overflow-hidden shrink-0">
                   {product.image ? (
                     <img src={product.image} className="w-full h-full object-cover" alt="" />
                   ) : (
@@ -680,7 +680,7 @@ export default function AdminSection({
                   )}
                 </div>
                 <div>
-                  <h4 className="font-serif text-white leading-tight">{product.name}</h4>
+                  <h4 className="font-serif text-secondary font-semibold leading-tight">{product.name}</h4>
                   <p className="text-xs text-primary mt-1 font-bold">{product.price}</p>
                 </div>
               </div>
@@ -689,17 +689,17 @@ export default function AdminSection({
                   onClick={() => handleGenerateBoutiqueInvite(product)}
                   disabled={generatingBoutiqueInviteId === product.id}
                   className={cn(
-                    "px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap",
+                    "px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer",
                     copiedLinkBoutiqueId === product.id
-                      ? "bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-extrabold"
-                      : "bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary hover:border-primary/45"
+                      ? "bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 font-extrabold"
+                      : "bg-primary/10 hover:bg-primary/20 border border-primary/20 text-secondary hover:border-primary/45"
                   )}
                   title="Generate boutique invitation code & dynamic route"
                 >
                   {generatingBoutiqueInviteId === product.id ? (
                     <Loader2 size={12} className="animate-spin text-primary" />
                   ) : copiedLinkBoutiqueId === product.id ? (
-                    <Check size={12} className="text-emerald-400" />
+                    <Check size={12} className="text-emerald-600" />
                   ) : (
                     <Share2 size={12} className="text-primary" />
                   )}
@@ -709,10 +709,10 @@ export default function AdminSection({
                 </button>
 
                 <div className="flex gap-1">
-                  <button onClick={() => handleEdit(product)} className="p-2 text-white/40 hover:text-primary transition-colors" title="Edit Item Details">
+                  <button onClick={() => handleEdit(product)} className="p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer" title="Edit Item Details">
                     <Edit2 size={16} />
                   </button>
-                  <button onClick={() => confirmDelete(product.id)} className="p-2 text-white/40 hover:text-red-400 transition-colors" title="Remove Item">
+                  <button onClick={() => confirmDelete(product.id)} className="p-2 text-stone-400 hover:text-red-500 transition-colors cursor-pointer" title="Remove Item">
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -721,9 +721,9 @@ export default function AdminSection({
           ))
         ) : activeTab === 'clubs' ? (
           clubs.map(club => (
-            <div key={club.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex items-center justify-between group">
+            <div key={club.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex items-center justify-between group hover:border-primary/40 shadow-xs transition-all">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-white/5 rounded-xl flex items-center justify-center text-primary overflow-hidden">
+                <div className="w-16 h-16 bg-secondary/5 border border-secondary/15 rounded-xl flex items-center justify-center text-secondary overflow-hidden">
                   {club.image ? (
                     <img src={club.image} className="w-full h-full object-cover" alt="" />
                   ) : (
@@ -731,16 +731,16 @@ export default function AdminSection({
                   )}
                 </div>
                 <div>
-                  <h4 className="font-serif text-white leading-tight">{club.name}</h4>
-                  <p className="text-[10px] text-white/40 uppercase tracking-widest mt-1">{club.location || 'Location Pending'}</p>
-                  <p className="text-[8px] text-white/20 font-mono mt-1 select-all">ID: {club.id}</p>
+                  <h4 className="font-serif text-secondary font-semibold leading-tight">{club.name}</h4>
+                  <p className="text-[10px] text-stone-500 uppercase tracking-widest mt-1">{club.location || 'Location Pending'}</p>
+                  <p className="text-[8px] text-stone-400 font-mono mt-1 select-all">ID: {club.id}</p>
                 </div>
               </div>
               <div className="flex gap-2">
-                <button onClick={() => handleEdit(club)} className="p-2 text-white/40 hover:text-primary transition-colors">
+                <button onClick={() => handleEdit(club)} className="p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer">
                   <Edit2 size={18} />
                 </button>
-                <button onClick={() => confirmDelete(club.id)} className="p-2 text-white/40 hover:text-red-400 transition-colors">
+                <button onClick={() => confirmDelete(club.id)} className="p-2 text-stone-400 hover:text-red-500 transition-colors cursor-pointer">
                   <Trash2 size={18} />
                 </button>
               </div>
@@ -749,19 +749,19 @@ export default function AdminSection({
         ) : activeTab === 'tickets' ? (
           <div className="space-y-6">
             {/* Tickets Filters Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-stone-50 p-4 rounded-2xl border border-stone-200">
               <div className="relative flex-1">
                 <input
                   type="text"
                   placeholder="Filter by email, event name, ticket ID..."
                   value={ticketSearch}
                   onChange={(e) => setTicketSearch(e.target.value)}
-                  className="w-full h-11 bg-white/5 border border-white/10 rounded-xl px-4 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#d8c39b]/50 transition-colors"
+                  className="w-full h-11 bg-white border border-stone-200 rounded-xl px-4 text-xs text-secondary placeholder-stone-400 focus:outline-none focus:border-primary transition-colors shadow-xs"
                 />
                 {ticketSearch && (
                   <button 
                     onClick={() => setTicketSearch('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-secondary cursor-pointer"
                   >
                     <X size={14} />
                   </button>
@@ -773,10 +773,10 @@ export default function AdminSection({
                     key={status}
                     onClick={() => setTicketStatusFilter(status)}
                     className={cn(
-                      "h-9 px-3.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider border transition-all whitespace-nowrap",
+                      "h-9 px-3.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider border transition-all whitespace-nowrap cursor-pointer",
                       ticketStatusFilter === status 
-                        ? "bg-primary/25 border-primary text-primary" 
-                        : "bg-transparent border-white/10 text-white/50 hover:text-white hover:border-white/20"
+                        ? "bg-secondary text-primary border-secondary shadow-xs" 
+                        : "bg-white border-stone-200 text-stone-600 hover:text-secondary hover:border-stone-300"
                     )}
                   >
                     {status === 'all' ? 'All Statuses' : status === 'valid' ? 'Valid' : status === 'pending' ? 'Pending' : status === 'used' ? 'Checked In' : 'Cancelled'}
@@ -786,10 +786,10 @@ export default function AdminSection({
                 {/* Refresh Database button */}
                 <button
                   onClick={() => fetchData(true)}
-                  className="h-9 w-9 flex items-center justify-center rounded-lg border border-white/10 bg-transparent text-white/50 hover:text-white hover:border-white/20 transition-all ml-1"
+                  className="h-9 w-9 flex items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-500 hover:text-secondary hover:border-stone-300 transition-all ml-1 cursor-pointer shadow-xs"
                   title="Refresh status logs"
                 >
-                  <RefreshCw size={12} className={cn(fetching && "animate-spin")} />
+                  <RefreshCw size={12} className={cn(fetching && "animate-spin text-primary")} />
                 </button>
               </div>
             </div>
@@ -814,8 +814,8 @@ export default function AdminSection({
 
                 if (filtered.length === 0) {
                   return (
-                    <div className="py-16 text-center border border-dashed border-white/10 rounded-2xl opacity-40">
-                      <Ticket className="mx-auto mb-4" size={32} />
+                    <div className="py-16 text-center border border-dashed border-stone-200 rounded-2xl bg-white/50 text-stone-400">
+                      <Ticket className="mx-auto mb-4 text-stone-300" size={32} />
                       <p className="text-xs uppercase tracking-widest font-mono">No Tickets Found</p>
                     </div>
                   );
@@ -824,40 +824,40 @@ export default function AdminSection({
                 return filtered.map(tkt => {
                   const userEmail = profiles.find(p => p.id === tkt.user_id)?.email || tkt.user_id || 'demo-user@proof.com';
                   return (
-                    <div key={tkt.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:border-white/10 transition-colors">
+                    <div key={tkt.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:border-primary/40 shadow-xs transition-all">
                       <div className="flex items-start md:items-center gap-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+                        <div className="w-12 h-12 bg-secondary/10 border border-secondary/20 rounded-xl flex items-center justify-center text-secondary shrink-0">
                           <Ticket size={24} />
                         </div>
                         <div className="space-y-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <h4 className="font-serif text-white leading-tight text-base">{tkt.event_name}</h4>
+                            <h4 className="font-serif text-secondary font-semibold leading-tight text-base">{tkt.event_name}</h4>
                             <span className={cn(
                               "text-[8px] font-extrabold px-2 py-0.5 rounded border uppercase tracking-wider",
-                              tkt.status === 'valid' ? "border-emerald-500/30 text-emerald-400 bg-emerald-500/5" :
-                              tkt.status === 'used' ? "border-blue-500/30 text-blue-400 bg-blue-500/5" :
-                              tkt.status === 'pending' ? "border-amber-500/30 text-amber-400 bg-amber-500/5" :
-                              "border-red-500/30 text-red-400 bg-red-500/5"
+                              tkt.status === 'valid' ? "border-emerald-500/30 text-emerald-600 bg-emerald-50" :
+                              tkt.status === 'used' ? "border-blue-500/30 text-blue-600 bg-blue-50" :
+                              tkt.status === 'pending' ? "border-amber-500/30 text-amber-600 bg-amber-50" :
+                              "border-red-500/30 text-red-600 bg-red-50"
                             )}>
                               {tkt.status === 'valid' ? 'Valid' : tkt.status === 'used' ? 'Checked In' : tkt.status === 'pending' ? 'Pending' : 'Cancelled'}
                             </span>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-0.5 text-[10px] text-white/50 font-mono">
-                            <span>ID: <span className="text-white select-all">#{String(tkt.id).substring(Math.max(0, String(tkt.id).length - 8)).toUpperCase()}</span></span>
-                            <span className="hidden sm:inline text-white/20">•</span>
-                            <span>Order: <span className="text-white/70">#{String(tkt.order_id || '').substring(0, 10).toUpperCase()}</span></span>
-                            <span className="hidden sm:inline text-white/20">•</span>
-                            <span>Date: <span className="text-[#d8c39b]">{tkt.event_date || 'Upcoming'}</span></span>
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-x-3 gap-y-0.5 text-[10px] text-stone-500 font-mono">
+                            <span>ID: <span className="text-secondary font-bold select-all">#{String(tkt.id).substring(Math.max(0, String(tkt.id).length - 8)).toUpperCase()}</span></span>
+                            <span className="hidden sm:inline text-stone-300">•</span>
+                            <span>Order: <span className="text-stone-600">#{String(tkt.order_id || '').substring(0, 10).toUpperCase()}</span></span>
+                            <span className="hidden sm:inline text-stone-300">•</span>
+                            <span>Date: <span className="text-primary font-bold">{tkt.event_date || 'Upcoming'}</span></span>
                           </div>
-                          <p className="text-xs text-white/70">
-                            Purchaser: <span className="text-primary font-medium">{userEmail}</span>
+                          <p className="text-xs text-stone-600">
+                            Purchaser: <span className="text-secondary font-semibold font-mono">{userEmail}</span>
                           </p>
                         </div>
                       </div>
                       
-                      <div className="flex flex-wrap items-center gap-2 border-t border-white/5 pt-3 md:border-t-0 md:pt-0">
+                      <div className="flex flex-wrap items-center gap-2 border-t border-stone-100 pt-3 md:border-t-0 md:pt-0">
                         {updatingTicketStatusId === tkt.id ? (
-                          <div className="flex items-center gap-1.5 text-xs text-white/40 px-3 py-1.5 font-mono">
+                          <div className="flex items-center gap-1.5 text-xs text-stone-400 px-3 py-1.5 font-mono">
                             <Loader2 className="animate-spin text-primary" size={14} />
                             <span>UPDATING</span>
                           </div>
@@ -872,7 +872,7 @@ export default function AdminSection({
                                   if (data) setTickets(data);
                                   setUpdatingTicketStatusId(null);
                                 }}
-                                className="px-3 py-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-400 text-[10px] font-bold rounded-lg flex items-center gap-1 transition-all cursor-pointer"
+                                className="px-3 py-1.5 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-blue-600 text-[10px] font-bold rounded-lg flex items-center gap-1 transition-all cursor-pointer"
                                 title="Mark ticket as Used/Checked-in"
                               >
                                 <Check size={12} /> Check In
@@ -887,7 +887,7 @@ export default function AdminSection({
                                   if (data) setTickets(data);
                                   setUpdatingTicketStatusId(null);
                                 }}
-                                className="px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
+                                className="px-3 py-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-600 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
                                 title="Set status to Valid"
                               >
                                 Set Valid
@@ -902,7 +902,7 @@ export default function AdminSection({
                                   if (data) setTickets(data);
                                   setUpdatingTicketStatusId(null);
                                 }}
-                                className="px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-400 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
+                                className="px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-600 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
                                 title="Set status to Pending"
                               >
                                 Set Pending
@@ -917,7 +917,7 @@ export default function AdminSection({
                                   if (data) setTickets(data);
                                   setUpdatingTicketStatusId(null);
                                 }}
-                                className="px-3 py-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-500 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
+                                className="px-3 py-1.5 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-600 text-[10px] font-bold rounded-lg transition-all cursor-pointer"
                                 title="Cancel Ticket"
                               >
                                 Cancel Pass
@@ -944,23 +944,23 @@ export default function AdminSection({
                 const orderUser = profiles.find(p => p.id === order.user_id);
                 const userEmail = orderUser ? orderUser.email : "Guest User";
                 return (
-                  <div key={order.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-white/10 transition-colors">
+                  <div key={order.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-primary/40 shadow-xs transition-all">
                     <div>
-                      <h4 className="font-serif text-white leading-tight">{order.product_name || order.item_name}</h4>
-                      <p className="text-[10px] text-white/50 font-mono mt-1">Order #{(order.order_id || order.id)?.substring(0,8) || order.payfast_pf_payment_id || "N/A"}</p>
-                      <p className="text-[11px] text-white/40 mt-1 uppercase tracking-widest">
+                      <h4 className="font-serif text-secondary font-semibold leading-tight">{order.product_name || order.item_name}</h4>
+                      <p className="text-[10px] text-stone-500 font-mono mt-1">Order #{(order.order_id || order.id)?.substring(0,8) || order.payfast_pf_payment_id || "N/A"}</p>
+                      <p className="text-[11px] text-stone-600 mt-1 uppercase tracking-widest font-medium">
                         Qty: {order.quantity} • Total: R{order.amount_gross || (order.quantity * order.unit_price)}
                       </p>
-                      <p className="text-[10px] text-primary/80 mt-1 uppercase tracking-widest">
+                      <p className="text-[10px] text-primary mt-1 uppercase tracking-widest font-semibold">
                         Ordered by: {userEmail}
                       </p>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className={cn(
                         "px-2.5 py-1 rounded-lg text-[9px] font-extrabold uppercase tracking-widest border",
-                        order.fulfilment_status === 'complete' ? "border-green-500/30 text-green-400 bg-green-500/10" :
-                        order.fulfilment_status === 'pending' ? "border-yellow-500/30 text-yellow-400 bg-yellow-500/10" :
-                        "border-white/20 text-white/50 bg-white/5"
+                        order.fulfilment_status === 'complete' ? "border-emerald-500/30 text-emerald-600 bg-emerald-50" :
+                        order.fulfilment_status === 'pending' ? "border-amber-500/30 text-amber-600 bg-amber-50" :
+                        "border-stone-200 text-stone-600 bg-stone-100"
                       )}>
                         {order.fulfilment_status || order.status}
                       </span>
@@ -973,20 +973,20 @@ export default function AdminSection({
         ) : activeTab === 'promo' ? (
           <div className="space-y-4">
             {promoCodes.length === 0 ? (
-              <div className="py-10 text-center opacity-40">
-                <Ticket className="mx-auto mb-4" size={32} />
+              <div className="py-10 text-center text-stone-400">
+                <Ticket className="mx-auto mb-4 text-stone-300" size={32} />
                 <p className="text-xs uppercase tracking-widest font-mono">No Promo Codes Found</p>
               </div>
             ) : (
               promoCodes.map(promo => (
-                <div key={promo.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex items-center justify-between group hover:border-white/10 transition-colors">
+                <div key={promo.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex items-center justify-between group hover:border-primary/40 shadow-xs transition-all">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary border border-primary/20">
+                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary border border-secondary/20">
                       <Ticket size={20} />
                     </div>
                     <div>
-                      <h4 className="font-mono text-white text-lg font-bold tracking-wider">{promo.code}</h4>
-                      <p className="text-[10px] text-white/50 uppercase tracking-widest mt-1">
+                      <h4 className="font-mono text-secondary text-lg font-bold tracking-wider">{promo.code}</h4>
+                      <p className="text-[10px] text-stone-500 uppercase tracking-widest mt-1">
                         {promo.discount_type === 'percent' ? `${promo.discount_value}% OFF` : `R${promo.discount_value} OFF`}
                         {promo.min_order_amount > 0 && ` • MIN R${promo.min_order_amount}`}
                       </p>
@@ -994,24 +994,24 @@ export default function AdminSection({
                   </div>
                   <div className="flex items-center gap-6">
                     <div className="text-right hidden sm:block">
-                      <p className="text-xs text-white/70">
+                      <p className="text-xs text-stone-600 font-medium">
                         Uses: {promo.times_used} {promo.max_uses ? `/ ${promo.max_uses}` : '(Unlimited)'}
                       </p>
-                      <p className="text-[10px] text-white/40 mt-1 uppercase">
+                      <p className="text-[10px] text-stone-400 mt-1 uppercase">
                         {promo.expires_at ? `Exp: ${new Date(promo.expires_at).toLocaleDateString()}` : 'Never Expires'}
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className={cn(
                         "px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider border",
-                        promo.active ? "bg-green-500/10 text-green-400 border-green-500/20" : "bg-red-500/10 text-red-400 border-red-500/20"
+                        promo.active ? "bg-emerald-50 text-emerald-600 border-emerald-500/30" : "bg-red-50 text-red-600 border-red-500/30"
                       )}>
                         {promo.active ? "Active" : "Disabled"}
                       </span>
-                      <button onClick={() => handleEdit(promo)} className="p-2 text-white/40 hover:text-primary transition-colors">
+                      <button onClick={() => handleEdit(promo)} className="p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer">
                         <Edit2 size={18} />
                       </button>
-                      <button onClick={() => confirmDelete(promo.id)} className="p-2 text-white/40 hover:text-red-400 transition-colors">
+                      <button onClick={() => confirmDelete(promo.id)} className="p-2 text-stone-400 hover:text-red-500 transition-colors cursor-pointer">
                         <Trash2 size={18} />
                       </button>
                     </div>
@@ -1022,19 +1022,19 @@ export default function AdminSection({
           </div>
         ) : (
           profiles.map(profile => (
-            <div key={profile.id} className="p-5 bg-surface-container border border-white/5 rounded-2xl flex items-center justify-between group">
+            <div key={profile.id} className="p-5 bg-surface border border-stone-200/80 rounded-2xl flex items-center justify-between group hover:border-primary/40 shadow-xs transition-all">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white/40">
+                <div className="w-12 h-12 bg-secondary/10 border border-secondary/20 rounded-full flex items-center justify-center text-secondary">
                   <Users size={20} />
                 </div>
                 <div>
-                  <h4 className="font-serif text-white leading-tight">{profile.email}</h4>
+                  <h4 className="font-serif text-secondary font-semibold leading-tight">{profile.email}</h4>
                   <div className="flex flex-wrap items-center gap-1.5 mt-2">
                     <span className={cn(
                       "text-[8px] font-bold px-1.5 py-0.5 rounded border uppercase tracking-widest",
-                      profile.role === 'admin' ? "border-primary text-primary" : 
-                      profile.role === 'master_admin' ? "border-purple-400 text-purple-400 font-extrabold" :
-                      "border-white/20 text-white/40"
+                      profile.role === 'admin' ? "border-primary/40 bg-primary/10 text-secondary font-extrabold" : 
+                      profile.role === 'master_admin' ? "border-secondary/30 bg-secondary/10 text-secondary font-extrabold" :
+                      "border-stone-200 bg-stone-100 text-stone-600"
                     )}>
                       {profile.role}
                     </span>
@@ -1043,17 +1043,17 @@ export default function AdminSection({
                         const cName = m.clubs?.name || m.club_id;
                         if (!cName) return null;
                         return (
-                          <span key={idx} className="text-[8px] text-white/50 bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                          <span key={idx} className="text-[8px] text-stone-600 bg-stone-100 border border-stone-200 px-1.5 py-0.5 rounded uppercase tracking-wider">
                             {cName}
                           </span>
                         );
                       })
                     ) : profile.club_name ? (
-                      <span className="text-[8px] text-white/50 bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                      <span className="text-[8px] text-stone-600 bg-stone-100 border border-stone-200 px-1.5 py-0.5 rounded uppercase tracking-wider">
                         {profile.club_name}
                       </span>
                     ) : (
-                      <span className="text-[8px] text-white/25 italic uppercase tracking-wider px-1">
+                      <span className="text-[8px] text-stone-400 italic uppercase tracking-wider px-1">
                         No Club Assigned
                       </span>
                     )}
@@ -1061,7 +1061,7 @@ export default function AdminSection({
                 </div>
               </div>
               <div className="flex gap-2">
-                <button onClick={() => handleEdit(profile)} className="p-2 text-white/40 hover:text-primary transition-colors">
+                <button onClick={() => handleEdit(profile)} className="p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer">
                   <Edit2 size={18} />
                 </button>
               </div>
@@ -1070,38 +1070,38 @@ export default function AdminSection({
         )}
 
         {!fetching && activeTab === 'events' && events.length === 0 && (
-          <div className="py-20 text-center opacity-40">
-            <Calendar className="mx-auto mb-4" size={32} />
+          <div className="py-20 text-center text-stone-400">
+            <Calendar className="mx-auto mb-4 text-stone-300" size={32} />
             <p className="text-xs uppercase tracking-widest">No events scheduled.</p>
           </div>
         )}
       </div>
 
       {/* Club Announcement Broadcast Console */}
-      <div className="mt-12 p-8 bg-surface-container border border-white/5 rounded-3xl relative overflow-hidden shadow-2xl" id="broadcast-center-card">
+      <div className="mt-12 p-8 bg-surface border border-stone-200/80 rounded-3xl relative overflow-hidden shadow-sm" id="broadcast-center-card">
         {/* Subtle Decorative Golden Edge Accent */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#c9a96e] to-transparent opacity-60" />
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80" />
 
         <div className="max-w-xl">
-          <span className="text-[10px] font-extrabold text-[#c9a96e] tracking-[0.25em] uppercase block mb-2">Communications Center</span>
-          <h3 className="text-2xl font-serif text-white mb-2 leading-tight">Club Announcement Broadcasts</h3>
-          <p className="text-xs text-white/50 leading-relaxed mb-8">
+          <span className="text-[10px] font-extrabold text-primary tracking-[0.25em] uppercase block mb-2">Communications Center</span>
+          <h3 className="text-2xl font-serif text-secondary mb-2 leading-tight font-semibold">Club Announcement Broadcasts</h3>
+          <p className="text-xs text-on-surface-variant leading-relaxed mb-8">
             Dispatch a high-priority push notice and live feed alert to members. Announcements are pushed instantly via OneSignal segment rules.
           </p>
 
           <form onSubmit={handleSendBroadcastAnnouncement} className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest mb-1.5 block">Target Club</label>
+                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5 block">Target Club</label>
                 <select
                   value={broadcastClubId}
                   onChange={(e) => setBroadcastClubId(e.target.value)}
-                  className="w-full h-12 bg-black/40 border border-white/10 rounded-xl px-4 outline-none focus:border-[#c9a96e] text-xs text-white"
+                  className="w-full h-12 bg-stone-50 border border-stone-200 rounded-xl px-4 outline-none focus:border-primary text-xs text-secondary cursor-pointer"
                   id="broadcast-audience-selector"
                 >
-                  <option value="" className="bg-neutral-900 text-white/80">All OneSignal Subscribers (Global Broadcast)</option>
+                  <option value="" className="bg-white text-secondary">All OneSignal Subscribers (Global Broadcast)</option>
                   {clubs.map((club) => (
-                    <option key={club.id} value={club.id} className="bg-neutral-900 text-white/80">
+                    <option key={club.id} value={club.id} className="bg-white text-secondary">
                       Club: {club.name}
                     </option>
                   ))}
@@ -1109,26 +1109,26 @@ export default function AdminSection({
               </div>
 
               <div>
-                <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest mb-1.5 block">Announcement Title</label>
+                <label className="text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5 block">Announcement Title</label>
                 <input
                   type="text"
                   placeholder="e.g. Rare Highland Release Tasting"
                   value={broadcastTitle}
                   onChange={(e) => setBroadcastTitle(e.target.value)}
-                  className="w-full h-12 bg-black/40 border border-white/10 rounded-xl px-4 outline-none focus:border-[#c9a96e] text-xs text-white"
+                  className="w-full h-12 bg-stone-50 border border-stone-200 rounded-xl px-4 outline-none focus:border-primary text-xs text-secondary placeholder-stone-400"
                   id="broadcast-title-input"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-[9px] font-bold text-white/40 uppercase tracking-widest mb-1.5 block">Message / Announcement Body</label>
+              <label className="text-[9px] font-bold text-stone-500 uppercase tracking-widest mb-1.5 block">Message / Announcement Body</label>
               <textarea
                 placeholder="Declare dates, limited cask bottles availability, or access instructions here..."
                 value={broadcastMessage}
                 onChange={(e) => setBroadcastMessage(e.target.value)}
                 rows={3}
-                className="w-full bg-black/40 border border-white/10 rounded-xl p-4 outline-none focus:border-[#c9a96e] text-xs text-white resize-none"
+                className="w-full bg-stone-50 border border-stone-200 rounded-xl p-4 outline-none focus:border-primary text-xs text-secondary placeholder-stone-400 resize-none"
                 id="broadcast-message-area"
               />
             </div>
@@ -1137,8 +1137,8 @@ export default function AdminSection({
               <div
                 className={`p-4 rounded-xl text-xs font-medium border ${
                   broadcastStatus.success
-                    ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
-                    : "bg-red-500/10 border-red-500/20 text-red-400"
+                    ? "bg-emerald-50 border-emerald-500/20 text-emerald-600"
+                    : "bg-red-50 border-red-500/20 text-red-600"
                 }`}
                 id="broadcast-feedback-status"
               >
@@ -1149,12 +1149,12 @@ export default function AdminSection({
             <button
               type="submit"
               disabled={broadcasting}
-              className="h-12 w-full md:w-auto px-6 bg-[#c9a96e] hover:bg-[#c9a96e]/90 text-black font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+              className="h-12 w-full md:w-auto px-6 bg-secondary hover:bg-secondary/90 text-primary font-extrabold text-[10px] uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer shadow-xs"
               id="broadcast-submit-btn"
             >
               {broadcasting ? (
                 <>
-                  <Loader2 className="animate-spin text-black" size={12} />
+                  <Loader2 className="animate-spin text-primary" size={12} />
                   <span>DISPATCHING BROADCAST...</span>
                 </>
               ) : (
@@ -1172,26 +1172,26 @@ export default function AdminSection({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
+            className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm flex items-center justify-center p-6"
           >
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-surface-container border border-white/10 rounded-3xl p-8 max-w-sm w-full text-center"
+              className="bg-white border border-stone-200 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl"
             >
-              <div className="w-16 h-16 bg-red-400/10 text-red-400 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Trash2 size={32} />
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2">Confirm Delete</h3>
-              <p className="text-sm text-white/60 mb-8 leading-relaxed">
+              <h3 className="text-2xl font-serif text-secondary font-semibold mb-2">Confirm Delete</h3>
+              <p className="text-sm text-stone-600 mb-8 leading-relaxed">
                 Are you sure you want to remove this listing? This action cannot be undone.
               </p>
               <div className="flex flex-col gap-3">
                 <button 
                   onClick={handleDelete}
                   disabled={saving}
-                  className="h-14 bg-red-500 hover:bg-red-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+                  className="h-14 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50 cursor-pointer shadow-xs"
                 >
                   {saving ? <Loader2 className="animate-spin" /> : 'YES, DELETE LISTING'}
                 </button>
@@ -1201,7 +1201,7 @@ export default function AdminSection({
                     setDeletingId(null);
                   }}
                   disabled={saving}
-                  className="h-14 bg-white/5 hover:bg-white/10 text-white rounded-xl font-bold transition-all disabled:opacity-50"
+                  className="h-14 bg-stone-100 hover:bg-stone-200 text-secondary rounded-xl font-bold transition-all disabled:opacity-50 cursor-pointer"
                 >
                   CANCEL
                 </button>
@@ -1218,14 +1218,14 @@ export default function AdminSection({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-2xl p-6 flex flex-col pt-24 overflow-y-auto"
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md p-6 flex flex-col pt-12 pb-16 overflow-y-auto"
           >
-            <div className="max-w-lg mx-auto w-full">
-              <div className="flex items-center justify-between mb-10">
-                <h3 className="text-3xl font-serif text-white">
+            <div className="max-w-lg mx-auto w-full bg-white border border-stone-200 p-8 rounded-[2rem] shadow-2xl">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-3xl font-serif text-secondary font-semibold">
                   {activeTab === 'users' ? 'Admin Privileges' : `Edit ${activeTab.slice(0, -1)}`}
                 </h3>
-                <button onClick={() => setEditingItem(null)} className="p-2 text-white/60 hover:text-white">
+                <button onClick={() => setEditingItem(null)} className="p-2 text-stone-400 hover:text-secondary rounded-full transition-colors cursor-pointer">
                   <X size={24} />
                 </button>
               </div>
@@ -1234,69 +1234,69 @@ export default function AdminSection({
                 {activeTab === 'users' ? (
                   <>
                     <div>
-                      <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Email Address</label>
+                      <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Email Address</label>
                       <input 
                         disabled
                         value={editingItem.email}
-                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none opacity-50"
+                        className="w-full h-14 bg-stone-100 border border-stone-200 rounded-xl px-6 outline-none opacity-60 text-secondary"
                       />
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">User Role</label>
+                      <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">User Role</label>
                       <select 
                         name="role"
                         defaultValue={editingItem.role || 'member'}
-                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary appearance-none text-white"
+                        className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary appearance-none text-secondary cursor-pointer"
                       >
-                        <option value="member" className="bg-black">Member</option>
-                        <option value="admin" className="bg-black">Admin</option>
-                        <option value="master_admin" className="bg-black">Master Admin</option>
-                        <option value="guest" className="bg-black">Guest</option>
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                        <option value="master_admin">Master Admin</option>
+                        <option value="guest">Guest</option>
                       </select>
                     </div>
                     <div>
-                      <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Club Memberships (Select Multiple)</label>
-                      <div className="space-y-3 bg-white/5 border border-white/10 rounded-xl p-4 max-h-48 overflow-y-auto mb-2 select-none">
+                      <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Club Memberships (Select Multiple)</label>
+                      <div className="space-y-3 bg-stone-50 border border-stone-200 rounded-xl p-4 max-h-48 overflow-y-auto mb-2 select-none">
                         {clubs.map(club => {
                           const isMember = editingItem.club_members?.some((m: any) => m.club_id === club.id) || editingItem.club_id === club.id;
                           return (
-                            <label key={club.id} className="flex items-center gap-3 cursor-pointer text-white/80 hover:text-white group">
+                            <label key={club.id} className="flex items-center gap-3 cursor-pointer text-stone-700 hover:text-secondary group">
                               <input 
                                 type="checkbox"
                                 name={`membership_${club.id}`}
                                 defaultChecked={isMember}
-                                className="w-5 h-5 rounded border border-white/20 text-primary accent-primary bg-black/40 cursor-pointer"
+                                className="w-5 h-5 rounded border border-stone-300 text-primary accent-primary cursor-pointer"
                               />
                               <div className="text-xs">
-                                <span className="font-serif block font-medium group-hover:text-primary transition-colors text-white">{club.name}</span>
-                                <span className="text-[9px] text-white/30 font-mono">{club.id}</span>
+                                <span className="font-serif block font-medium group-hover:text-primary transition-colors text-secondary">{club.name}</span>
+                                <span className="text-[9px] text-stone-400 font-mono">{club.id}</span>
                               </div>
                             </label>
                           );
                         })}
                       </div>
-                      <p className="text-[9px] text-white/30 uppercase tracking-tighter">Check all clubs this member belongs to. Privilege tokens will automatically bind.</p>
+                      <p className="text-[9px] text-stone-400 uppercase tracking-tighter">Check all clubs this member belongs to. Privilege tokens will automatically bind.</p>
                     </div>
                   </>
                 ) : activeTab === 'promo' ? (
                   <>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Promo Code</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Promo Code</label>
                         <input 
                           name="code"
                           defaultValue={editingItem.code}
                           placeholder="e.g. SAVE10"
                           required
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary uppercase font-mono"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary uppercase font-mono text-secondary"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Discount Type</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Discount Type</label>
                         <select
                           name="discount_type"
                           defaultValue={editingItem.discount_type || 'percent'}
-                          className="w-full h-14 bg-black/40 border border-white/10 rounded-xl px-6 outline-none focus:border-primary text-white"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary cursor-pointer"
                         >
                           <option value="percent">Percentage (%)</option>
                           <option value="fixed">Fixed Amount (ZAR)</option>
@@ -1305,7 +1305,7 @@ export default function AdminSection({
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Discount Value</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Discount Value</label>
                         <input 
                           name="discount_value"
                           type="number"
@@ -1313,38 +1313,38 @@ export default function AdminSection({
                           required
                           defaultValue={editingItem.discount_value}
                           placeholder="e.g. 10 or 50.00"
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Min Order Amount (Optional)</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Min Order Amount (Optional)</label>
                         <input 
                           name="min_order_amount"
                           type="number"
                           step="0.01"
                           defaultValue={editingItem.min_order_amount || 0}
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                         />
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Max Uses (Optional)</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Max Uses (Optional)</label>
                         <input 
                           name="max_uses"
                           type="number"
                           defaultValue={editingItem.max_uses}
                           placeholder="Leave blank for unlimited"
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                         />
                       </div>
                       <div>
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Expiry Date (Optional)</label>
+                        <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Expiry Date (Optional)</label>
                         <input 
                           name="expires_at"
                           type="date"
                           defaultValue={editingItem.expires_at ? new Date(editingItem.expires_at).toISOString().split('T')[0] : ''}
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary text-white"
+                          className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                         />
                       </div>
                     </div>
@@ -1354,9 +1354,9 @@ export default function AdminSection({
                           type="checkbox"
                           name="active"
                           defaultChecked={editingItem.active !== false}
-                          className="w-5 h-5 rounded border border-white/20 text-primary accent-primary bg-black/40 cursor-pointer"
+                          className="w-5 h-5 rounded border border-stone-300 text-primary accent-primary cursor-pointer"
                         />
-                        <span className="text-xs font-bold text-white/80 group-hover:text-white transition-colors uppercase tracking-widest">
+                        <span className="text-xs font-bold text-secondary group-hover:text-primary transition-colors uppercase tracking-widest">
                           Code is Active
                         </span>
                       </label>
@@ -1365,14 +1365,14 @@ export default function AdminSection({
                 ) : (
                   <>
                     <div>
-                      <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">
+                      <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">
                         {activeTab === 'events' ? 'Event Title' : activeTab === 'boutique' ? 'Product Name' : 'Club Name'}
                       </label>
                       <input 
                         name={activeTab === 'events' ? 'title' : 'name'}
                         defaultValue={editingItem.title || editingItem.name}
                         placeholder="Enter identifier..."
-                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                        className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                       />
                     </div>
                     
@@ -1380,16 +1380,16 @@ export default function AdminSection({
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Display Price / Fee</label>
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Display Price / Fee</label>
                             <input 
                               name="price"
                               defaultValue={editingItem.price}
                               placeholder="$0.00 or R250"
-                              className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                              className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                             />
                           </div>
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block flex justify-between items-center">
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block flex justify-between items-center">
                               <span>Visual Asset</span>
                               {uploading && (
                                 <span className="text-[9px] text-primary flex items-center gap-1 animate-pulse font-serif italic">
@@ -1403,8 +1403,8 @@ export default function AdminSection({
                               onDragLeave={handleDrag}
                               onDrop={handleDrop}
                               className={cn(
-                                "relative h-14 bg-white/5 border rounded-xl flex items-center group overflow-hidden transition-all duration-300",
-                                dragActive ? "border-primary bg-primary/10 scale-[1.01]" : "border-white/10"
+                                "relative h-14 bg-stone-50 border rounded-xl flex items-center group overflow-hidden transition-all duration-300",
+                                dragActive ? "border-primary bg-primary/10 scale-[1.01]" : "border-stone-200"
                               )}
                             >
                               <input 
@@ -1413,7 +1413,7 @@ export default function AdminSection({
                                 defaultValue={editingItem.image}
                                 placeholder={dragActive ? "Drop image here..." : uploading ? "Uploading..." : "https://example.com/image.jpg or Drop File"}
                                 className={cn(
-                                  "w-full h-full bg-transparent px-10 outline-none text-xs pr-12 transition-all",
+                                  "w-full h-full bg-transparent px-10 outline-none text-xs pr-12 transition-all text-secondary",
                                   uploading ? "opacity-30 pl-12" : "pl-12"
                                 )}
                                 disabled={uploading}
@@ -1423,13 +1423,13 @@ export default function AdminSection({
                                   <Loader2 size={14} className="animate-spin text-primary" />
                                 </div>
                               ) : (
-                                <div className="absolute left-4 opacity-30 select-none group-focus-within:opacity-85 transition-opacity">
-                                  <Upload size={14} className="text-white" />
+                                <div className="absolute left-4 opacity-40 select-none group-focus-within:opacity-85 transition-opacity">
+                                  <Upload size={14} className="text-secondary" />
                                 </div>
                               )}
                               <div className="absolute right-4 pointer-events-none opacity-40 group-hover:opacity-100 flex items-center gap-1.5">
                                 <Plus size={14} strokeWidth={2.5} className="text-primary" />
-                                <span className="text-[9px] uppercase tracking-widest text-[#d8c39b] font-serif font-bold">Upload</span>
+                                <span className="text-[9px] uppercase tracking-widest text-primary font-serif font-bold">Upload</span>
                               </div>
                               <input 
                                 type="file" 
@@ -1448,35 +1448,35 @@ export default function AdminSection({
                         </div>
 
                         {/* Payfast Integration Form Fields */}
-                        <div className="pt-2 border-t border-white/5 space-y-3">
+                        <div className="pt-2 border-t border-stone-200 space-y-3">
                           <div className="flex items-center gap-2">
                             <span className="text-[10px] font-extrabold text-primary tracking-[0.2em] uppercase">Payfast Payment Integration</span>
-                            <span className="text-[8px] bg-primary/10 text-primary border border-primary/20 px-1.5 py-0.5 rounded uppercase font-mono tracking-wider font-bold">ZAR Terminal</span>
+                            <span className="text-[8px] bg-primary/10 text-secondary border border-primary/20 px-1.5 py-0.5 rounded uppercase font-mono tracking-wider font-bold">ZAR Terminal</span>
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1 block">ZAR Price (R ZAR)</label>
+                              <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-1 block">ZAR Price (R ZAR)</label>
                               <input 
                                 type="number"
                                 step="0.01"
                                 name="payfast_price"
                                 defaultValue={editingItem.payfast_price || ''}
                                 placeholder="e.g. 250.00"
-                                className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-white"
+                                className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                               />
                             </div>
                             <div>
-                              <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1 block">Capacity / Stock Quantity</label>
+                              <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-1 block">Capacity / Stock Quantity</label>
                               <input 
                                 type="number"
                                 name="payfast_quantity"
                                 defaultValue={editingItem.payfast_quantity || ''}
                                 placeholder="e.g. 50"
-                                className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-white"
+                                className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                               />
                             </div>
                           </div>
-                          <p className="text-[8px] text-white/30 uppercase tracking-tighter leading-tight">Specify ZAR amounts to activate standard Payfast sandbox checkout and interactive card/EFT checkout for members.</p>
+                          <p className="text-[8px] text-stone-400 uppercase tracking-tighter leading-tight">Specify ZAR amounts to activate standard Payfast checkout for members.</p>
                         </div>
                       </div>
                     )}
@@ -1485,52 +1485,52 @@ export default function AdminSection({
                       <>
                         {isMasterAdmin && (
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Assign to Club (Master Admin Only)</label>
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Assign to Club (Master Admin Only)</label>
                             <select 
                               name="club_id"
                               defaultValue={editingItem.club_id || ""}
-                              className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary appearance-none text-white font-mono text-xs"
+                              className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary appearance-none text-secondary font-mono text-xs cursor-pointer"
                             >
-                              <option value="" className="bg-black text-primary font-bold italic">Global Access (No Club)</option>
+                              <option value="" className="text-secondary font-bold italic">Global Access (No Club)</option>
                               {clubs.map(club => (
-                                <option key={club.id} value={club.id} className="bg-black">{club.name}</option>
+                                <option key={club.id} value={club.id}>{club.name}</option>
                               ))}
                             </select>
                           </div>
                         )}
                         <div className="grid grid-cols-2 gap-4">
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Date</label>
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Date</label>
                             <input 
                               name="date"
                               defaultValue={editingItem.date}
                               placeholder="2024-05-24"
-                              className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                              className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                             />
                           </div>
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Location</label>
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Location</label>
                             <input 
                               name="location"
                               defaultValue={editingItem.location}
                               placeholder="Main Salon"
-                              className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                              className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                             />
                           </div>
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Event Type</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Event Type</label>
                           <select 
                             name="category"
                             defaultValue={editingItem.category || 'tasting'}
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary appearance-none text-white"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary appearance-none text-secondary cursor-pointer"
                           >
-                            <option value="tasting" className="bg-black">Whisky Tasting</option>
-                            <option value="masterclass" className="bg-black">Masterclass</option>
-                            <option value="rare" className="bg-black">Rare Allocation</option>
-                            <option value="lounge" className="bg-black">Lounge Session</option>
-                            <option value="dinner" className="bg-black">Gourmet Dinner</option>
-                            <option value="special" className="bg-black">Special Event</option>
+                            <option value="tasting">Whisky Tasting</option>
+                            <option value="masterclass">Masterclass</option>
+                            <option value="rare">Rare Allocation</option>
+                            <option value="lounge">Lounge Session</option>
+                            <option value="dinner">Gourmet Dinner</option>
+                            <option value="special">Special Event</option>
                           </select>
                         </div>
                       </>
@@ -1540,86 +1540,86 @@ export default function AdminSection({
                       <div className="space-y-6">
                         {isMasterAdmin && (
                           <div>
-                            <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Assign to Club (Master Admin Only)</label>
+                            <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Assign to Club (Master Admin Only)</label>
                             <select 
                               name="club_id"
                               defaultValue={editingItem.club_id || ""}
-                              className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary appearance-none text-white font-mono text-xs"
+                              className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary appearance-none text-secondary font-mono text-xs cursor-pointer"
                             >
-                              <option value="" className="bg-black text-primary font-bold italic">Global Access (No Club)</option>
+                              <option value="" className="text-secondary font-bold italic">Global Access (No Club)</option>
                               {clubs.map(club => (
-                                <option key={club.id} value={club.id} className="bg-black">{club.name}</option>
+                                <option key={club.id} value={club.id}>{club.name}</option>
                               ))}
                             </select>
                           </div>
                         )}
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Category</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Category</label>
                           <select 
                             name="category"
-                          defaultValue={editingItem.category || 'whisky'}
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary appearance-none text-white"
-                        >
-                          <option value="whisky" className="bg-black">Single Malt</option>
-                          <option value="blend" className="bg-black">Blended Whisky</option>
-                          <option value="rare" className="bg-black">Rare Collection</option>
-                          <option value="accessories" className="bg-black">Accessories</option>
-                        </select>
+                            defaultValue={editingItem.category || 'whisky'}
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary appearance-none text-secondary cursor-pointer"
+                          >
+                            <option value="whisky">Single Malt</option>
+                            <option value="blend">Blended Whisky</option>
+                            <option value="rare">Rare Collection</option>
+                            <option value="accessories">Accessories</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
 
                     {activeTab === 'clubs' && (
                       <div className="space-y-4">
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Club ID (Unique Handle)</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Club ID (Unique Handle)</label>
                           <input 
                             name="id"
                             defaultValue={editingItem.id}
                             placeholder="custom-id-or-uuid"
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                           />
-                          <p className="text-[8px] text-white/30 mt-1 uppercase tracking-tighter">Warning: Changing an existing ID may disconnect linked members.</p>
+                          <p className="text-[8px] text-stone-400 mt-1 uppercase tracking-tighter">Warning: Changing an existing ID may disconnect linked members.</p>
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Base Of Operations</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Base Of Operations</label>
                           <input 
                             name="location"
                             defaultValue={editingItem.location}
                             placeholder="City, Province"
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary text-secondary"
                           />
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Club Payfast Merchant ID</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Club Payfast Merchant ID</label>
                           <input 
                             name="payfast_merchant_id"
                             defaultValue={editingItem.payfast_merchant_id || ""}
                             placeholder="e.g. 10000100 (Leave empty for standard Sandbox account code)"
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-white"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                           />
-                          <p className="text-[8px] text-white/30 mt-1 uppercase tracking-tighter">Required for split payouts: splits 95% of member ticket/boutique payments directly to this account, and 5% platform commission remains with Master/Platform account.</p>
+                          <p className="text-[8px] text-stone-400 mt-1 uppercase tracking-tighter">Required for split payouts: splits 95% of member ticket/boutique payments directly to this account, and 5% platform commission remains with Master/Platform account.</p>
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Monthly Joining Fee</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Monthly Joining Fee</label>
                           <input 
                             name="joining_fee_monthly"
                             defaultValue={editingItem.joining_fee_monthly || ""}
                             placeholder="e.g. 100"
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-white"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                           />
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Annual Joining Fee</label>
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Annual Joining Fee</label>
                           <input 
                             name="joining_fee_annual"
                             defaultValue={editingItem.joining_fee_annual || ""}
                             placeholder="e.g. 1000"
-                            className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-white"
+                            className="w-full h-14 bg-stone-50 border border-stone-200 rounded-xl px-6 outline-none focus:border-primary font-mono text-xs text-secondary"
                           />
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block flex justify-between items-center">
+                          <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block flex justify-between items-center">
                             <span>Club Hero Banner (Visual Asset)</span>
                             {uploading && (
                               <span className="text-[9px] text-primary flex items-center gap-1 animate-pulse font-serif italic">
@@ -1633,8 +1633,8 @@ export default function AdminSection({
                             onDragLeave={handleDrag}
                             onDrop={handleDrop}
                             className={cn(
-                              "relative h-14 bg-white/5 border rounded-xl flex items-center group overflow-hidden transition-all duration-300",
-                              dragActive ? "border-primary bg-primary/10 scale-[1.01]" : "border-white/10"
+                              "relative h-14 bg-stone-50 border rounded-xl flex items-center group overflow-hidden transition-all duration-300",
+                              dragActive ? "border-primary bg-primary/10 scale-[1.01]" : "border-stone-200"
                             )}
                           >
                             <input 
@@ -1643,7 +1643,7 @@ export default function AdminSection({
                               defaultValue={editingItem.image}
                               placeholder={dragActive ? "Drop image here..." : uploading ? "Uploading..." : "https://example.com/club-banner.jpg or Drop File"}
                               className={cn(
-                                "w-full h-full bg-transparent px-10 outline-none text-xs pr-12 transition-all",
+                                "w-full h-full bg-transparent px-10 outline-none text-xs pr-12 transition-all text-secondary",
                                 uploading ? "opacity-30 pl-12" : "pl-12"
                               )}
                               disabled={uploading}
@@ -1653,13 +1653,13 @@ export default function AdminSection({
                                 <Loader2 size={14} className="animate-spin text-primary" />
                               </div>
                             ) : (
-                              <div className="absolute left-4 opacity-30 select-none group-focus-within:opacity-85 transition-opacity">
-                                <Upload size={14} className="text-white" />
+                              <div className="absolute left-4 opacity-40 select-none group-focus-within:opacity-85 transition-opacity">
+                                <Upload size={14} className="text-secondary" />
                               </div>
                             )}
                             <div className="absolute right-4 pointer-events-none opacity-40 group-hover:opacity-100 flex items-center gap-1.5">
                               <Plus size={14} strokeWidth={2.5} className="text-primary" />
-                              <span className="text-[9px] uppercase tracking-widest text-[#d8c39b] font-serif font-bold">Upload</span>
+                              <span className="text-[9px] uppercase tracking-widest text-primary font-serif font-bold">Upload</span>
                             </div>
                             <input 
                               type="file" 
@@ -1679,11 +1679,11 @@ export default function AdminSection({
                     )}
 
                     <div>
-                      <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Description</label>
+                      <label className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-2 block">Description</label>
                       <textarea 
                         name="description"
                         defaultValue={editingItem.description || editingItem.desc}
-                        className="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-6 outline-none focus:border-primary resize-none"
+                        className="w-full h-32 bg-stone-50 border border-stone-200 rounded-xl p-6 outline-none focus:border-primary resize-none text-secondary"
                       />
                     </div>
                   </>
@@ -1692,9 +1692,9 @@ export default function AdminSection({
                 <button 
                   type="submit"
                   disabled={saving}
-                  className="w-full h-16 bg-primary text-black rounded-full font-bold flex items-center justify-center gap-3 active:scale-95 transition-transform mt-10 disabled:opacity-50"
+                  className="w-full h-16 bg-primary text-secondary rounded-full font-extrabold flex items-center justify-center gap-3 active:scale-95 transition-transform mt-10 disabled:opacity-50 shadow-md cursor-pointer"
                 >
-                  {saving ? <Loader2 className="animate-spin" /> : <Save size={20} />} 
+                  {saving ? <Loader2 className="animate-spin text-secondary" /> : <Save size={20} />} 
                   {activeTab === 'users' ? 'CONFIRM PRIVILEGES' : 'SAVE CHANGES'}
                 </button>
               </form>

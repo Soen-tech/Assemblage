@@ -1,6 +1,6 @@
 {
-  "name": "PROOF",
-  "description": "Premium whisky club platform with AI bottle recognition and curated tasting guides.",
+  "name": "ASSEMBLAGE",
+  "description": "Premium members club platform with AI bottle recognition and curated tasting guides.",
   "requestFramePermissions": [
     "camera"
   ],
@@ -8,6 +8,6 @@
     "AI Bottle Recognition",
     "Tasting Journal",
     "Expert Masterclasses",
-    "Whisky Boutique"
+    "Boutique"
   ]
 }

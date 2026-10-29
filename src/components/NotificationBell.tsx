@@ -207,19 +207,19 @@ export default function NotificationBell({
       {/* Target Bell Trigger Button */}
       <button
         onClick={handleToggleOpen}
-        className="relative p-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex items-center justify-center text-white/80 hover:text-white"
+        className="relative p-2 rounded-xl text-secondary hover:text-primary transition-colors flex items-center justify-center cursor-pointer"
         title="Notifications"
         id="notification-bell-btn"
       >
         {unreadCount > 0 ? (
-          <BellRing size={20} className="text-[#c9a96e] animate-pulse" />
+          <BellRing size={22} className="text-primary animate-pulse" />
         ) : (
-          <Bell size={20} />
+          <Bell size={22} />
         )}
 
         {unreadCount > 0 && (
           <span
-            className="absolute -top-1 -right-1 bg-[#c9a96e] text-black text-[9px] font-extrabold rounded-full w-[18px] h-[18px] flex items-center justify-center border border-black shadow"
+            className="absolute 0 top-0.5 right-0.5 bg-primary text-secondary text-[9px] font-extrabold rounded-full w-[17px] h-[17px] flex items-center justify-center border border-white shadow-xs"
             id="notification-unread-badge"
           >
             {unreadCount > 9 ? "9+" : unreadCount}
@@ -230,17 +230,17 @@ export default function NotificationBell({
       {/* Notifications Dropdown Panel */}
       {isOpen && (
         <div
-          className="fixed inset-x-0 bottom-0 top-[60px] sm:absolute sm:right-0 sm:top-12 sm:bottom-auto sm:inset-x-auto w-full sm:w-[340px] max-h-[80vh] sm:max-h-[500px] flex flex-col bg-black/95 backdrop-blur-2xl border-t sm:border border-white/10 sm:rounded-2xl shadow-xl z-[9999] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
+          className="fixed inset-x-0 bottom-0 top-[60px] sm:absolute sm:right-0 sm:top-12 sm:bottom-auto sm:inset-x-auto w-full sm:w-[350px] max-h-[80vh] sm:max-h-[500px] flex flex-col bg-white border-t sm:border border-stone-200 sm:rounded-2xl shadow-2xl z-[9999] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
           id="notification-dropdown-panel"
         >
           {/* Header Panel */}
-          <div className="p-4 border-b border-white/5 flex items-center justify-between shrink-0">
-            <h4 className="font-serif text-white font-medium text-lg leading-none">Notifications</h4>
+          <div className="p-4 border-b border-stone-200 flex items-center justify-between shrink-0 bg-stone-50/50">
+            <h4 className="font-serif text-secondary font-semibold text-lg leading-none">Notifications</h4>
             <div className="flex items-center gap-3">
               {unreadCount > 0 && (
                 <button
                   onClick={handleMarkAllReadManual}
-                  className="text-[#c9a96e] hover:text-[#c9a96e]/80 text-[11px] font-bold tracking-wider uppercase transition-colors"
+                  className="text-primary hover:text-primary/80 text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer"
                   id="notif-mark-all-read"
                 >
                   Mark all read
@@ -249,7 +249,7 @@ export default function NotificationBell({
               {notifications.length > 0 && (
                 <button
                   onClick={handleClearAllManual}
-                  className="text-white/40 hover:text-red-400 text-[11px] font-bold tracking-wider uppercase transition-colors"
+                  className="text-stone-400 hover:text-red-500 text-[11px] font-bold tracking-wider uppercase transition-colors cursor-pointer"
                   id="notif-clear-all"
                 >
                   Clear all
@@ -257,7 +257,7 @@ export default function NotificationBell({
               )}
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 rounded-lg hover:bg-white/5 transition-colors text-white/40 hover:text-white"
+                className="p-1 rounded-lg hover:bg-stone-100 transition-colors text-stone-400 hover:text-secondary cursor-pointer"
                 id="notif-close-panel"
               >
                 <X size={16} />
@@ -269,31 +269,31 @@ export default function NotificationBell({
             {/* Push Banner Subscription Notice */}
             {!pushEnabled && !bannerDismissed && permissionState !== "denied" && (
               <div
-                className="mb-4 bg-[#c9a96e]/10 border border-[#c9a96e]/20 rounded-xl p-3.5 text-left relative"
+                className="mb-4 bg-primary/10 border border-primary/20 rounded-xl p-3.5 text-left relative"
                 id="push-enable-banner"
               >
                 <button
                   onClick={handleDismissBanner}
-                  className="absolute top-2.5 right-2.5 text-white/40 hover:text-white/80 p-1 rounded-md transition-colors"
+                  className="absolute top-2.5 right-2.5 text-stone-400 hover:text-secondary p-1 rounded-md transition-colors cursor-pointer"
                   title="Dismiss notice"
                   id="push-dismiss-btn"
                 >
                   <X size={13} />
                 </button>
                 <div className="flex items-start gap-2.5 pr-6">
-                  <div className="p-1.5 rounded-lg bg-[#c9a96e]/10 text-[#c9a96e] shrink-0 mt-0.5">
+                  <div className="p-1.5 rounded-lg bg-primary/20 text-secondary shrink-0 mt-0.5">
                     <Bell size={14} />
                   </div>
                   <div className="space-y-1">
-                    <h5 className="text-[#c9a96e] text-xs font-bold leading-tight uppercase tracking-wider">Keep updated</h5>
-                    <p className="text-white/70 text-[10.5px] leading-relaxed">
-                      Enable push notifications to receive real-time updates of event invitations and announcements.
+                    <h5 className="text-secondary text-xs font-bold leading-tight uppercase tracking-wider">Stay Informed</h5>
+                    <p className="text-on-surface-variant text-[11px] leading-relaxed">
+                      Enable push notifications to receive real-time updates for exclusive drops and private tastings.
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={handleEnablePush}
-                  className="mt-2.5 w-full bg-[#c9a96e] hover:bg-[#c9a96e]/90 text-black font-extrabold text-[10px] uppercase tracking-wider py-1.5 px-3 rounded-lg transition-all"
+                  className="mt-2.5 w-full bg-primary hover:bg-primary/90 text-secondary font-extrabold text-[10px] uppercase tracking-wider py-2 px-3 rounded-lg transition-all shadow-xs cursor-pointer"
                   id="push-enable-btn"
                 >
                   Enable Notifications
@@ -304,11 +304,11 @@ export default function NotificationBell({
             {/* List State Render */}
             {notifications.length === 0 ? (
               <div className="py-12 text-center" id="notifications-empty-state">
-                <div className="w-12 h-12 rounded-full bg-white/5 text-white/20 flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 rounded-full bg-secondary/5 text-secondary flex items-center justify-center mx-auto mb-4 border border-secondary/15">
                   <Bell size={24} />
                 </div>
-                <h5 className="text-white/60 font-medium text-sm mb-1">No notifications yet</h5>
-                <p className="text-white/30 text-xs max-w-[200px] mx-auto leading-relaxed">
+                <h5 className="text-secondary font-serif font-semibold text-base mb-1">No notifications yet</h5>
+                <p className="text-stone-400 text-xs max-w-[200px] mx-auto leading-relaxed">
                   You'll be notified about private events, boutique bookings, and exclusive club announcements.
                 </p>
               </div>
@@ -320,10 +320,10 @@ export default function NotificationBell({
                     <div
                       key={notif.id}
                       onClick={() => handleNotificationClick(notif)}
-                      className={`relative rounded-xl p-3.5 border border-white/5 transition-all text-left flex gap-3.5 cursor-pointer block hover:bg-white/5 group ${
+                      className={`relative rounded-xl p-3.5 border transition-all text-left flex gap-3.5 cursor-pointer block hover:bg-stone-50 group ${
                         notif.read
-                          ? "bg-transparent border-transparent"
-                          : "bg-white/5 border-l-2 border-l-[#c9a96e]"
+                          ? "bg-transparent border-stone-100"
+                          : "bg-surface-container border-stone-200 border-l-3 border-l-primary"
                       }`}
                       id={`notification-row-${notif.id}`}
                     >
@@ -333,17 +333,17 @@ export default function NotificationBell({
 
                       <div className="space-y-0.5 min-w-0 flex-1">
                         <div className="flex items-start justify-between gap-2">
-                          <h5 className="font-serif text-white font-medium text-xs break-words whitespace-normal">
+                          <h5 className="font-serif text-secondary font-semibold text-xs break-words whitespace-normal">
                             {notif.title}
                           </h5>
                           {!notif.read && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e] shrink-0 mt-1"></span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1"></span>
                           )}
                         </div>
-                        <p className="text-white/60 text-[11px] leading-relaxed break-words">
+                        <p className="text-on-surface-variant text-[11px] leading-relaxed break-words">
                           {notif.message}
                         </p>
-                        <span className="text-[9px] text-white/30 block pt-1 font-mono pr-8">
+                        <span className="text-[9px] text-stone-400 block pt-1 font-mono pr-8">
                           {formatTimeAgo(notif.created_at)}
                         </span>
                       </div>
@@ -351,7 +351,7 @@ export default function NotificationBell({
                       {/* Delete notification button */}
                       <button
                         onClick={(e) => handleDeleteClick(e, notif.id)}
-                        className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-transparent hover:bg-white/10 text-white/40 hover:text-red-400/90 transition-all cursor-pointer opacity-0 group-hover:opacity-100 sm:opacity-100"
+                        className="absolute bottom-2 right-2 p-1.5 rounded-lg bg-transparent hover:bg-stone-200 text-stone-400 hover:text-red-500 transition-all cursor-pointer opacity-0 group-hover:opacity-100 sm:opacity-100"
                         title="Delete Notification"
                         id={`delete-notif-btn-${notif.id}`}
                       >

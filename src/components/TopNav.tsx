@@ -145,7 +145,7 @@ export default function TopNav({
       default:
         return {
           label: 'Club Member',
-          style: 'border-white/10 bg-white/5 text-white/70',
+          style: 'border-secondary/20 bg-secondary/5 text-secondary',
         };
     }
   };
@@ -155,19 +155,19 @@ export default function TopNav({
 
   return (
     <>
-      <header className="sticky top-0 left-0 right-0 z-40 bg-surface/80 backdrop-blur-md px-6 py-4 border-b border-b-white/5">
+      <header className="sticky top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md px-6 py-4 border-b border-b-stone-200/80 shadow-xs">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <motion.button 
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsClubOpen(true)}
-            className="p-2 -ml-2 text-on-surface hover:text-primary transition-colors"
+            className="p-2 -ml-2 text-secondary hover:text-primary transition-colors cursor-pointer"
             id="menu-button"
           >
             <Menu size={24} />
           </motion.button>
           
           <h1 className="font-serif text-xl tracking-widest uppercase font-semibold text-secondary">
-            PROOF
+            ASSEMBLAGE
           </h1>
 
           <div className="flex items-center gap-2">
@@ -188,7 +188,7 @@ export default function TopNav({
             <motion.button 
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsProfileOpen(true)}
-              className="p-2 text-on-surface hover:text-primary transition-colors relative"
+              className="p-2 text-secondary hover:text-primary transition-colors relative cursor-pointer"
               id="profile-button"
             >
               <UserIcon size={24} />
@@ -217,16 +217,16 @@ export default function TopNav({
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full max-w-md bg-surface border-l border-white/5 h-screen max-h-screen overflow-hidden flex flex-col justify-between shadow-2xl"
+              className="relative w-full max-w-md bg-white border-l border-stone-200/80 h-screen max-h-screen overflow-hidden flex flex-col justify-between shadow-2xl"
               id="profile-modal-panel"
             >
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto p-8 pb-6 scrollbar-none">
                 {/* Header */}
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
+                <div className="flex items-center justify-between mb-8 pb-4 border-b border-stone-200">
                   <div className="flex items-center gap-2">
                     <Shield size={14} className="text-primary" />
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Club Profile</span>
+                    <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">Club Profile</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <motion.button
@@ -236,7 +236,7 @@ export default function TopNav({
                         setIsProfileOpen(false);
                         onLogout?.();
                       }}
-                      className="px-3 py-1.5 rounded-lg border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-400 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 transition-all duration-200"
+                      className="px-3 py-1.5 rounded-lg border border-red-500/30 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-[10px] uppercase tracking-wider flex items-center gap-1.5 transition-all duration-200 cursor-pointer"
                     >
                       <LogOut size={12} />
                       LOG OUT
@@ -244,7 +244,7 @@ export default function TopNav({
                     <motion.button
                       whileTap={{ scale: 0.9 }}
                       onClick={() => setIsProfileOpen(false)}
-                      className="p-1 text-white/40 hover:text-white transition-colors"
+                      className="p-1 text-stone-400 hover:text-secondary transition-colors cursor-pointer"
                     >
                       <X size={20} />
                     </motion.button>
@@ -252,15 +252,15 @@ export default function TopNav({
                 </div>
 
                 {/* Profile Header Card */}
-                <div className="flex flex-col items-center text-center p-6 bg-surface-container rounded-3xl border border-white/5 mb-8">
-                  <div className="w-18 h-18 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center mb-4 text-primary relative">
-                    <span className="text-3xl font-serif font-bold">{firstLetter}</span>
-                    <div className="absolute -bottom-1 -right-1 p-1.5 bg-background rounded-full border border-white/10">
-                      <Sparkles size={12} className="text-[#d8c39b]" />
+                <div className="flex flex-col items-center text-center p-6 bg-surface-container rounded-3xl border border-stone-200/80 mb-8 shadow-xs">
+                  <div className="w-18 h-18 rounded-full bg-secondary/10 border-2 border-primary/40 flex items-center justify-center mb-4 text-secondary relative">
+                    <span className="text-3xl font-serif font-bold text-secondary">{firstLetter}</span>
+                    <div className="absolute -bottom-1 -right-1 p-1.5 bg-white rounded-full border border-stone-200 shadow-xs">
+                      <Sparkles size={12} className="text-primary" />
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-serif text-white mb-1.5">
+                  <h3 className="text-xl font-serif text-secondary mb-1.5 font-semibold">
                     {user?.username || 'Independent Collector'}
                   </h3>
                   
@@ -277,51 +277,51 @@ export default function TopNav({
 
                 {/* Profile Details Grid */}
                 <div className="space-y-4">
-                  <h4 className="text-[9px] font-bold text-white/30 uppercase tracking-[0.2em] mb-3 ml-1">Secure Vault Metadata</h4>
+                  <h4 className="text-[9px] font-bold text-secondary uppercase tracking-[0.2em] mb-3 ml-1">Secure Vault Metadata</h4>
                   
                   {/* Nickname */}
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                    <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary">
                       <UserIcon size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Bespoke Alias</span>
-                      <span className="text-sm font-medium text-white block truncate">{user?.username || 'No alias registered'}</span>
+                      <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Bespoke Alias</span>
+                      <span className="text-sm font-medium text-secondary block truncate">{user?.username || 'No alias registered'}</span>
                     </div>
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                    <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary">
                       <Mail size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Secured Email</span>
-                      <span className="text-sm font-medium text-white block truncate">{user?.email || 'anonymous@proof.co'}</span>
+                      <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Secured Email</span>
+                      <span className="text-sm font-medium text-secondary block truncate">{user?.email || 'anonymous@proof.co'}</span>
                     </div>
                   </div>
 
                   {/* Club Name */}
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                    <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary">
                       <Landmark size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Assigned Club</span>
-                      <span className="text-sm font-medium text-[#d8c39b] font-serif block truncate">
+                      <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Assigned Club</span>
+                      <span className="text-sm font-medium text-secondary font-serif block truncate">
                         {user?.clubName || 'Independent Circle'}
                       </span>
                     </div>
                   </div>
 
                   {/* Club ID */}
-                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary">
+                  <div className="flex items-center gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                    <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary">
                       <Hash size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Club Access Key</span>
-                      <span className="text-xs font-mono text-white/50 block select-all">
+                      <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Club Access Key</span>
+                      <span className="text-xs font-mono text-stone-600 block select-all">
                         {user?.clubId || 'independent'}
                       </span>
                     </div>
@@ -329,10 +329,10 @@ export default function TopNav({
                 </div>
 
                 {user?.role === 'member' && !hasActiveSubscription && (
-                  <div className="mx-6 mt-1 mt-6 bg-gradient-to-br from-amber-500/10 to-primary/5 border border-primary/20 rounded-3xl p-5 text-center">
+                  <div className="mx-6 mt-6 bg-gradient-to-br from-primary/15 via-[#123826]/10 to-primary/5 border border-primary/30 rounded-3xl p-5 text-center shadow-xs">
                     <span className="text-[9px] font-extrabold text-primary tracking-widest uppercase mb-1 block">CLUB CIRCLE STATUS</span>
-                    <h5 className="text-white font-serif text-sm font-semibold mb-2">Unsubscribed Standing</h5>
-                    <p className="text-xs text-white/50 leading-relaxed mb-4">
+                    <h5 className="text-secondary font-serif text-sm font-semibold mb-2">Unsubscribed Standing</h5>
+                    <p className="text-xs text-on-surface-variant leading-relaxed mb-4">
                       Your premium profile is ready. Activate. Complete your standing to unlock rare cask allocations.
                     </p>
                     <motion.button
@@ -342,7 +342,7 @@ export default function TopNav({
                         setIsProfileOpen(false);
                         onSubscribeClick?.();
                       }}
-                      className="w-full py-3 bg-primary text-black rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                      className="w-full py-3 bg-primary text-secondary rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-primary/20 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Sparkles size={14} className="animate-pulse" />
                       BECOME A MEMBER • SUBSCRIBE & JOIN
@@ -352,8 +352,8 @@ export default function TopNav({
               </div>
 
               {/* Sticky Footer Panel */}
-              <div className="p-6 border-t border-white/5 bg-surface">
-                <p className="text-[8.5px] text-white/20 uppercase tracking-widest text-center">
+              <div className="p-6 border-t border-stone-200 bg-white">
+                <p className="text-[8.5px] text-stone-400 uppercase tracking-widest text-center">
                   Session token encrypted • Protocol SHA-256
                 </p>
               </div>
@@ -382,21 +382,21 @@ export default function TopNav({
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="relative w-full max-w-md bg-surface border-r border-white/5 h-screen max-h-screen overflow-hidden flex flex-col justify-between shadow-2xl shadow-black/80"
+              className="relative w-full max-w-md bg-white border-r border-stone-200/80 h-screen max-h-screen overflow-hidden flex flex-col justify-between shadow-2xl"
               id="club-modal-panel"
             >
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto p-8 pb-6 scrollbar-none">
                 {/* Header */}
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
+                <div className="flex items-center justify-between mb-8 pb-4 border-b border-stone-200">
                   <div className="flex items-center gap-2">
                     <Landmark size={14} className="text-primary" />
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Club Registry</span>
+                    <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">Club Registry</span>
                   </div>
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsClubOpen(false)}
-                    className="p-1 text-white/40 hover:text-white transition-colors"
+                    className="p-1 text-stone-400 hover:text-secondary transition-colors cursor-pointer"
                   >
                     <X size={20} />
                   </motion.button>
@@ -433,13 +433,13 @@ export default function TopNav({
                     {/* Main Content Details */}
                     <div className="space-y-4">
                       {/* Location Area */}
-                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                        <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary mt-0.5">
+                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                        <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary mt-0.5">
                           <MapPin size={16} />
                         </div>
                         <div className="flex-1">
-                          <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Club Location</span>
-                          <span className="text-sm font-medium text-white block mt-0.5 animate-fade-in">
+                          <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Club Location</span>
+                          <span className="text-sm font-medium text-secondary block mt-0.5 animate-fade-in font-serif">
                             {getClubLocation(selectedClubId, clubDetails?.location || clubDetails?.city)}
                           </span>
                         </div>
@@ -447,13 +447,13 @@ export default function TopNav({
 
                       {/* Members Counter */}
                       {(clubDetails?.members || !isClubLoading) && (
-                        <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                          <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary mt-0.5">
+                        <div className="flex items-start gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                          <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary mt-0.5">
                             <Users size={16} />
                           </div>
                           <div className="flex-1">
-                            <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Registry Size</span>
-                            <span className="text-sm font-medium text-white block mt-0.5 animate-fade-in">
+                            <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Registry Size</span>
+                            <span className="text-sm font-medium text-secondary block mt-0.5 animate-fade-in font-serif">
                               {clubDetails?.members ?? (selectedClubId === 'underground-001' ? '1.2k' : selectedClubId === '2' ? '850' : selectedClubId === '3' ? '2.4k' : '500+')} Registered Collectors
                             </span>
                           </div>
@@ -461,26 +461,26 @@ export default function TopNav({
                       )}
 
                       {/* Description */}
-                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                        <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary mt-0.5">
+                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                        <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary mt-0.5">
                           <Compass size={16} />
                         </div>
                         <div className="flex-1">
-                          <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Club Manifesto</span>
-                          <p className="text-xs text-white/65 leading-relaxed mt-1.5 font-sans animate-fade-in">
+                          <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Club Manifesto</span>
+                          <p className="text-xs text-on-surface-variant leading-relaxed mt-1.5 font-sans animate-fade-in">
                             {getClubManifesto(selectedClubId, clubDetails?.description)}
                           </p>
                         </div>
                       </div>
 
                       {/* Club Code / Access key */}
-                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                        <div className="p-2.5 rounded-xl bg-background border border-white/5 text-primary mt-0.5">
+                      <div className="flex items-start gap-4 p-4 rounded-2xl bg-surface-container border border-stone-200/80 shadow-xs">
+                        <div className="p-2.5 rounded-xl bg-white border border-stone-200 text-primary mt-0.5">
                           <Hash size={16} />
                         </div>
                         <div className="flex-1">
-                          <span className="text-[8px] font-bold text-white/30 uppercase tracking-wider block">Secure Passkey</span>
-                          <span className="text-xs font-mono text-white/50 block select-all mt-1">
+                          <span className="text-[8px] font-bold text-stone-500 uppercase tracking-wider block">Secure Passkey</span>
+                          <span className="text-xs font-mono text-stone-600 block select-all mt-1">
                             {selectedClubId}
                           </span>
                         </div>
@@ -489,8 +489,8 @@ export default function TopNav({
 
                     {/* Active Clubs Selector List for Multi-club Members */}
                     {user?.clubs && user.clubs.length > 0 && (
-                      <div className="pt-4 border-t border-white/5 space-y-3">
-                        <h4 className="text-[9px] font-bold text-white/30 uppercase tracking-[0.2em] ml-1">My Active Clubs</h4>
+                      <div className="pt-4 border-t border-stone-200 space-y-3">
+                        <h4 className="text-[9px] font-bold text-secondary uppercase tracking-[0.2em] ml-1">My Active Clubs</h4>
                         <div className="space-y-2">
                           {user.clubs.map((membership) => {
                             const isSelected = selectedClubId === membership.club_id;
@@ -500,25 +500,25 @@ export default function TopNav({
                                 key={membership.club_id}
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => setSelectedClubId(membership.club_id)}
-                                className={`w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all text-left ${
+                                className={`w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all text-left cursor-pointer ${
                                   isSelected 
-                                    ? 'bg-primary/20 border-primary/45 text-white shadow-lg' 
-                                    : 'bg-white/5 border-white/5 text-white/60 hover:bg-white/10'
+                                    ? 'bg-secondary text-white border-secondary shadow-md' 
+                                    : 'bg-surface-container border-stone-200 text-stone-700 hover:bg-stone-100'
                                 }`}
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className={`p-2 rounded-xl ${isSelected ? 'bg-primary/20 text-primary' : 'bg-background border border-white/5 text-white/40'}`}>
+                                  <div className={`p-2 rounded-xl ${isSelected ? 'bg-white/20 text-white' : 'bg-white border border-stone-200 text-secondary'}`}>
                                     <Landmark size={14} />
                                   </div>
                                   <div>
-                                    <span className="text-xs font-medium font-serif block text-white">{membership.club_name}</span>
-                                    <span className="text-[8px] font-bold text-white/40 uppercase tracking-wider block mt-0.5">
+                                    <span className={`text-xs font-medium font-serif block ${isSelected ? 'text-white' : 'text-secondary'}`}>{membership.club_name}</span>
+                                    <span className={`text-[8px] font-bold uppercase tracking-wider block mt-0.5 ${isSelected ? 'text-white/70' : 'text-stone-400'}`}>
                                       {membership.role === 'admin' ? 'Operator' : 'Member'}
                                     </span>
                                   </div>
                                 </div>
                                 {isPrimary && (
-                                  <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 border border-primary/25 text-primary uppercase tracking-widest leading-none">
+                                  <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full border uppercase tracking-widest leading-none ${isSelected ? 'bg-primary text-secondary border-primary' : 'bg-primary/20 text-secondary border-primary/40'}`}>
                                     Home
                                   </span>
                                 )}
@@ -531,19 +531,19 @@ export default function TopNav({
                   </div>
                 ) : (
                   <div className="text-center py-12 px-6">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/30 mb-4">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary mb-4">
                       <Compass size={24} />
                     </div>
-                    <h3 className="text-lg font-serif text-white mb-2">Independent Circle</h3>
-                    <p className="text-xs text-white/40 leading-relaxed mb-6">
+                    <h3 className="text-lg font-serif text-secondary mb-2 font-semibold">Independent Circle</h3>
+                    <p className="text-xs text-on-surface-variant leading-relaxed mb-6">
                       You are exploring as an independent curator. Join a local club to unlock specialized drops, localized tastings, and allocations.
                     </p>
                     {user?.role === 'guest' && (
                       <button
                         onClick={onGuestUpgradeClick}
-                        className="w-full h-12 bg-primary text-on-primary rounded-xl text-xs font-bold hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/10"
+                        className="w-full h-12 bg-primary text-secondary rounded-xl text-xs font-bold hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 cursor-pointer"
                       >
-                        <Sparkles size={14} className="text-on-primary animate-pulse" /> SIGN UP AS FULL MEMBER
+                        <Sparkles size={14} className="text-secondary animate-pulse" /> SIGN UP AS FULL MEMBER
                       </button>
                     )}
                   </div>
@@ -551,9 +551,9 @@ export default function TopNav({
               </div>
 
               {/* Sticky Footer */}
-              <div className="p-6 border-t border-white/5 bg-surface text-center">
-                <span className="text-[8.5px] text-white/20 uppercase tracking-widest block">
-                  PROOF Collective System • Level II Clearance
+              <div className="p-6 border-t border-stone-200 bg-white text-center">
+                <span className="text-[8.5px] text-stone-400 uppercase tracking-widest block">
+                  ASSEMBLAGE Collective System • Level II Clearance
                 </span>
               </div>
             </motion.div>

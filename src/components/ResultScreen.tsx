@@ -62,40 +62,40 @@ export default function ResultScreen({ whisky, onSave }: { whisky: Whisky; onSav
         <span className="text-[10px] font-extrabold text-primary tracking-widest uppercase">
           {isWine ? 'Wine Analysis Complete' : 'Analysis Complete'}
         </span>
-        <h2 className="text-3xl font-serif text-white mt-2 mb-2 leading-tight">{whisky.name}</h2>
+        <h2 className="text-3xl font-serif text-secondary mt-2 mb-2 leading-tight font-semibold">{whisky.name}</h2>
         <p className="text-sm text-balance text-on-surface-variant max-w-sm mx-auto leading-relaxed italic px-4">
           {whisky.description}
         </p>
       </header>
 
-      <section className="bg-surface-container rounded-3xl border border-white/5 p-6 mb-6">
-        <h3 className="text-label-md text-on-surface-variant mb-6 text-center">
+      <section className="bg-surface rounded-3xl border border-stone-200/80 p-6 mb-6 shadow-sm">
+        <h3 className="text-label-md text-secondary mb-6 text-center font-bold tracking-widest">
           {isWine ? "WINE CHARACTER PROFILE" : "SWRI FLAVOUR PROFILE"}
         </h3>
         <SWRIChart profile={whisky.swriProfile} />
         
-        <div className="grid grid-cols-4 gap-2 mt-8 text-center">
+        <div className="grid grid-cols-4 gap-2 mt-8 text-center border-t border-stone-100 pt-6">
           <div>
-            <p className="text-lg font-serif text-white">{whisky.swriProfile?.intensity || "--"}</p>
-            <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">
+            <p className="text-lg font-serif text-secondary font-semibold">{whisky.swriProfile?.intensity || "--"}</p>
+            <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">
               {isWine ? "Body" : "Intensity"}
             </p>
           </div>
           <div>
-            <p className="text-lg font-serif text-white truncate max-w-[70px] mx-auto" title={whisky.tastingNotes?.[0] || (isWine ? "Classic" : "Smoke")}>
+            <p className="text-lg font-serif text-secondary font-semibold truncate max-w-[70px] mx-auto" title={whisky.tastingNotes?.[0] || (isWine ? "Classic" : "Smoke")}>
               {whisky.tastingNotes?.[0] || (isWine ? "Classic" : "Smoke")}
             </p>
-            <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">Dominant</p>
+            <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">Dominant</p>
           </div>
           <div>
-            <p className="text-lg font-serif text-white">{whisky.age || (isWine ? "Vintage" : "NAS")}</p>
-            <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">
+            <p className="text-lg font-serif text-secondary font-semibold">{whisky.age || (isWine ? "Vintage" : "NAS")}</p>
+            <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">
               {isWine ? "Vintage" : "Maturity"}
             </p>
           </div>
           <div>
-            <p className="text-lg font-serif text-white truncate max-w-[70px] mx-auto" title={whisky.region}>{whisky.region}</p>
-            <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">
+            <p className="text-lg font-serif text-secondary font-semibold truncate max-w-[70px] mx-auto" title={whisky.region}>{whisky.region}</p>
+            <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">
               {isWine ? "Appellation" : "Region"}
             </p>
           </div>
@@ -103,22 +103,22 @@ export default function ResultScreen({ whisky, onSave }: { whisky: Whisky; onSav
       </section>
 
       <div className="space-y-4 mb-8">
-        <h3 className="text-label-md text-on-surface-variant ml-2 uppercase tracking-widest">PROMINENT NOTES</h3>
+        <h3 className="text-label-md text-secondary ml-2 uppercase tracking-widest font-bold">PROMINENT NOTES</h3>
         
         {prominentNotes.map((note, idx) => (
-          <div key={idx} className="bg-white/5 border border-white/5 p-4 rounded-2xl flex gap-4">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-xl flex-shrink-0">
+          <div key={idx} className="bg-surface border border-stone-200/80 p-4 rounded-2xl flex gap-4 shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary text-xl flex-shrink-0">
               {note.icon}
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white mb-1 tracking-tight">{note.label}</h4>
+              <h4 className="text-sm font-bold text-secondary mb-1 tracking-tight">{note.label}</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed">{note.desc}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="relative h-48 rounded-3xl overflow-hidden mb-8 border border-white/5 group">
+      <div className="relative h-48 rounded-3xl overflow-hidden mb-8 border border-stone-200/80 group shadow-sm">
         <img 
           src={imgSrc} 
           onError={() => {
@@ -130,25 +130,25 @@ export default function ResultScreen({ whisky, onSave }: { whisky: Whisky; onSav
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
         <div className="absolute bottom-6 left-6">
-          <p className="text-label-md text-primary mb-1 uppercase tracking-widest">{textureConfig.label}</p>
-          <p className="text-lg font-serif">{textureConfig.value}</p>
+          <p className="text-label-md text-primary mb-1 uppercase tracking-widest font-bold">{textureConfig.label}</p>
+          <p className="text-lg font-serif text-white font-medium">{textureConfig.value}</p>
         </div>
       </div>
 
       <div className="flex flex-col gap-3">
         <button 
           onClick={onSave}
-          className="w-full bg-primary text-on-primary h-14 rounded-full font-bold flex items-center justify-center gap-3 active:scale-95 transition-transform"
+          className="w-full bg-primary text-secondary h-14 rounded-full font-extrabold flex items-center justify-center gap-3 active:scale-95 transition-transform shadow-lg shadow-primary/20 cursor-pointer"
         >
-          <BookOpen size={20} /> SAVE TO JOURNAL
+          <BookOpen size={20} className="text-secondary" /> SAVE TO JOURNAL
         </button>
         <div className="flex gap-3">
-          <button className="flex-1 glass h-12 rounded-full font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-transform">
+          <button className="flex-1 glass h-12 rounded-full font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-transform border-stone-200 text-secondary hover:border-primary/40 cursor-pointer">
             <Share2 size={16} /> Share Result
           </button>
-          <button className="flex-1 glass h-12 rounded-full font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-transform">
+          <button className="flex-1 glass h-12 rounded-full font-bold text-xs flex items-center justify-center gap-2 active:scale-95 transition-transform border-stone-200 text-secondary hover:border-primary/40 cursor-pointer">
             <ShoppingBag size={16} /> Find a Bottle
           </button>
         </div>

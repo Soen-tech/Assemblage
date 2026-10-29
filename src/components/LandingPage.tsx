@@ -150,83 +150,91 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
   };
 
   return (
-    <div className="fixed inset-0 z-[60] bg-surface flex flex-col overflow-y-auto scrollbar-none">
-      {/* Cinematic Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+    <div className="fixed inset-0 z-[60] bg-black flex flex-col overflow-y-auto scrollbar-none selection:bg-primary selection:text-black">
+      {/* Cinematic Background with Video support from /public */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         <video 
           autoPlay 
           muted 
           playsInline
-          className="w-full h-full object-cover opacity-80"
+          loop
+          className="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-1000"
           poster="https://images.unsplash.com/photo-1527281480658-198cb28a1db0?auto=format&fit=crop&q=80&w=1200"
         >
           <source src="/login-bg.mp4" type="video/mp4" />
-          {/* Fallback to image if video not found - using high quality background */}
+          <source src="/background.mp4" type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-surface/40 to-surface" />
+        {/* Dark cinematic vignette overlays so video remains visible while preserving contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.65)_100%)]" />
       </div>
 
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-8 py-20 text-center max-w-lg mx-auto w-full">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 sm:px-8 py-16 text-center max-w-lg mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-16"
+          className="mb-12"
         >
-          <span className="text-label-md text-primary tracking-[0.3em] mb-4 block">THE ART OF HOSPITALITY</span>
-          <h1 className="text-5xl md:text-6xl font-serif text-white mb-6 leading-[1.1] tracking-tight">
-            PROOF
+          <span className="text-xs font-bold text-primary tracking-[0.35em] mb-4 block uppercase drop-shadow-md">THE ART OF HOSPITALITY</span>
+          <h1 className="text-5xl md:text-6xl font-serif text-[#FAF4E5] mb-5 leading-[1.1] tracking-tight drop-shadow-xl">
+            ASSEMBLAGE
           </h1>
-          <p className="text-lg text-on-surface-variant font-light leading-relaxed italic opacity-80">
-            Private members clubs, made effortless.
+          <p className="text-base md:text-lg text-[#E3EDE7]/80 font-light leading-relaxed italic max-w-sm mx-auto drop-shadow-md">
+            Private members clubs and VIP events.
           </p>
         </motion.div>
 
-        <div className="w-full space-y-4">
+        <div className="w-full space-y-4 max-w-md mx-auto">
           <button 
             onClick={() => setShowLogin(true)}
-            className="w-full h-16 bg-white text-black rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/90 transition-all active:scale-95"
+            className="w-full h-16 bg-primary hover:bg-[#d4af65] text-[#123826] rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 shadow-xl shadow-black/40 group cursor-pointer"
             id="login-cta"
           >
-            <LogIn size={20} /> LOGIN TO YOUR ACCOUNT
+            <LogIn size={20} className="text-[#123826] group-hover:scale-110 transition-transform" />
+            <span className="tracking-wider text-sm font-bold">LOGIN TO YOUR ACCOUNT</span>
           </button>
 
           <button 
             onClick={() => setShowSubscription(true)}
-            className="w-full h-16 glass rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all active:scale-95 border-primary/20 text-primary"
+            className="w-full h-16 bg-white/10 hover:bg-white/20 text-[#FAF4E5] backdrop-blur-md rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 border border-white/20 hover:border-primary/60 group cursor-pointer"
             id="member-cta"
           >
-            <UserPlus size={20} /> BECOME A MEMBER
+            <UserPlus size={20} className="text-primary group-hover:scale-110 transition-transform" />
+            <span className="tracking-wider text-sm font-bold">BECOME A MEMBER</span>
           </button>
 
           <button 
             onClick={() => setShowClubs(true)}
-            className="w-full h-16 glass rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all active:scale-95 border-white/5"
+            className="w-full h-16 bg-white/5 hover:bg-white/15 text-[#FAF4E5]/90 backdrop-blur-md rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 border border-white/10 hover:border-white/25 group cursor-pointer"
             id="explore-cta"
           >
-            <Compass size={20} /> EXPLORE CLUBS
+            <Compass size={20} className="text-primary group-hover:rotate-45 transition-transform" />
+            <span className="tracking-wider text-sm font-bold">EXPLORE CLUBS</span>
           </button>
 
           <button 
             onClick={() => onLogin('guest', 'guest@proof.collective', { user: { id: 'guest-bypass-id', email: 'guest@proof.collective' } })}
-            className="w-full h-16 glass rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white/10 text-primary border-primary/20 transition-all active:scale-95"
+            className="w-full h-16 bg-white/5 hover:bg-white/10 text-[#FAF4E5]/75 hover:text-white backdrop-blur-md rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 border border-white/10 group cursor-pointer"
             id="guest-cta"
           >
-            <Sparkles size={20} className="text-primary animate-pulse" /> EXPLORE AS GUEST
+            <Sparkles size={20} className="text-primary animate-pulse group-hover:scale-110 transition-transform" />
+            <span className="tracking-wider text-sm font-bold">EXPLORE AS GUEST</span>
           </button>
         </div>
 
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="mt-6 w-full"
+          transition={{ delay: 0.8 }}
+          className="mt-8 w-full"
         >
           <button 
             onClick={() => setShowAdminSignup(true)}
-            className="text-[10px] font-bold tracking-[0.2em] text-white/50 hover:text-primary uppercase flex items-center gap-2 mx-auto transition-colors"
+            className="text-[11px] font-bold tracking-[0.2em] text-[#C5A059] hover:text-white uppercase inline-flex items-center gap-2 mx-auto transition-colors cursor-pointer"
           >
-            <ShieldCheck size={14} /> Become a Club operator
+            <ShieldCheck size={14} className="text-primary" /> Become a Club operator
           </button>
         </motion.div>
       </main>
@@ -238,7 +246,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-black/90 backdrop-blur-xl p-6 flex items-center justify-center overflow-y-auto"
+            className="fixed inset-0 z-[70] bg-black/85 backdrop-blur-md p-4 sm:p-6 flex items-center justify-center overflow-y-auto"
           >
             <button 
               onClick={() => {
@@ -247,20 +255,20 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                 setShowSubscription(false);
                 setShowAdminSignup(false);
               }}
-              className="absolute top-8 right-8 w-12 h-12 rounded-full glass flex items-center justify-center text-white/60 hover:text-white"
+              className="absolute top-6 right-6 w-11 h-11 rounded-full bg-[#123826] border border-primary/40 flex items-center justify-center text-primary hover:text-white hover:border-primary shadow-lg transition-all z-10 cursor-pointer"
             >
-              <X size={24} />
+              <X size={22} />
             </button>
 
             <motion.div 
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-[#0e271a] border border-primary/35 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/85 text-white relative my-auto"
             >
               {showLogin && (
                 <div className="text-center">
                   {pendingEventPreview && (
-                    <div className="mb-6 bg-white/5 border border-[#d8c39b]/25 rounded-2xl p-4 text-left flex gap-4 items-center">
+                    <div className="mb-6 bg-[#081810] border border-primary/30 rounded-2xl p-4 text-left flex gap-4 items-center">
                       <img 
                         src={pendingEventPreview.image || 'https://images.unsplash.com/photo-1527281480658-198cb28a1db0?auto=format&fit=crop&q=80&w=200'}
                         className="w-16 h-16 object-cover rounded-xl shrink-0" 
@@ -268,9 +276,9 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                         referrerPolicy="no-referrer"
                       />
                       <div className="space-y-1 overflow-hidden flex-1">
-                        <span className="text-[8px] font-extrabold px-2 py-0.5 rounded border border-[#d8c39b]/30 text-[#d8c39b] bg-[#d8c39b]/5 uppercase tracking-wider inline-block">INVITATION ACCESS</span>
-                        <h4 className="font-serif text-white font-medium text-sm truncate mt-0.5">{pendingEventPreview.title}</h4>
-                        <div className="flex items-center gap-1.5 text-[9px] text-[#d8c39b] leading-tight font-mono">
+                        <span className="text-[8px] font-extrabold px-2 py-0.5 rounded border border-primary/40 text-primary bg-primary/10 uppercase tracking-wider inline-block">INVITATION ACCESS</span>
+                        <h4 className="font-serif text-[#FAF4E5] font-medium text-sm truncate mt-0.5">{pendingEventPreview.title}</h4>
+                        <div className="flex items-center gap-1.5 text-[9px] text-primary leading-tight font-mono">
                           <span>{pendingEventPreview.date || 'Upcoming'}</span>
                           <span>•</span>
                           <span className="truncate">{pendingEventPreview.location || 'Private Club'}</span>
@@ -280,7 +288,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                   )}
 
                   {pendingBoutiquePreview && (
-                    <div className="mb-6 bg-white/5 border border-[#d8c39b]/25 rounded-2xl p-4 text-left flex gap-4 items-center">
+                    <div className="mb-6 bg-[#081810] border border-primary/30 rounded-2xl p-4 text-left flex gap-4 items-center">
                       <img 
                         src={pendingBoutiquePreview.image || 'https://images.unsplash.com/photo-1527281480658-198cb28a1db0?auto=format&fit=crop&q=80&w=200'}
                         className="w-16 h-16 object-cover rounded-xl shrink-0" 
@@ -288,9 +296,9 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                         referrerPolicy="no-referrer"
                       />
                       <div className="space-y-1 overflow-hidden flex-1">
-                        <span className="text-[8px] font-extrabold px-2 py-0.5 rounded border border-[#d8c39b]/30 text-[#d8c39b] bg-[#d8c39b]/5 uppercase tracking-wider inline-block">EXCLUSIVE OFFERING ACCESS</span>
-                        <h4 className="font-serif text-white font-medium text-sm truncate mt-0.5">{pendingBoutiquePreview.name}</h4>
-                        <div className="flex items-center gap-1.5 text-[9px] text-[#d8c39b] leading-tight font-mono">
+                        <span className="text-[8px] font-extrabold px-2 py-0.5 rounded border border-primary/40 text-primary bg-primary/10 uppercase tracking-wider inline-block">EXCLUSIVE OFFERING ACCESS</span>
+                        <h4 className="font-serif text-[#FAF4E5] font-medium text-sm truncate mt-0.5">{pendingBoutiquePreview.name}</h4>
+                        <div className="flex items-center gap-1.5 text-[9px] text-primary leading-tight font-mono">
                           <span>{pendingBoutiquePreview.price || 'Allocation Only'}</span>
                           <span>•</span>
                           <span className="truncate">{pendingBoutiquePreview.category || 'Rare Reserve'}</span>
@@ -299,21 +307,23 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                     </div>
                   )}
 
-                  <h3 className="text-3xl font-serif text-white mb-4">
+                  <h3 className="text-3xl font-serif text-[#FAF4E5] mb-3">
                     {authMode === 'login' ? 'Welcome Back' : 'Create Account'}
                   </h3>
-                  <p className="text-sm text-on-surface-variant mb-6">
+                  <p className="text-sm text-[#E3EDE7]/80 mb-6 font-light">
                     {authMode === 'login' 
                       ? 'Enter your email to receive a secure login link.' 
                       : 'Join the club to access exclusive whisky experiences.'}
                   </p>
 
-                  <div className="flex bg-white/5 rounded-xl p-1 mb-6 border border-white/10">
+                  <div className="flex bg-[#081810] rounded-xl p-1 mb-6 border border-primary/25">
                     <button 
                       onClick={() => setAuthMode('login')}
                       className={cn(
-                        "flex-1 h-10 rounded-lg text-xs font-bold uppercase tracking-widest transition-all",
-                        authMode === 'login' ? "bg-white text-black" : "text-white/40 hover:text-white"
+                        "flex-1 h-10 rounded-lg text-xs font-bold uppercase tracking-widest transition-all cursor-pointer",
+                        authMode === 'login' 
+                          ? "bg-gradient-to-r from-[#123826] to-[#1c5036] text-primary border border-primary/50 shadow-sm" 
+                          : "text-white/50 hover:text-white"
                       )}
                     >
                       Login
@@ -321,8 +331,10 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                     <button 
                       onClick={() => setAuthMode('signup')}
                       className={cn(
-                        "flex-1 h-10 rounded-lg text-xs font-bold uppercase tracking-widest transition-all",
-                        authMode === 'signup' ? "bg-white text-black" : "text-white/40 hover:text-white"
+                        "flex-1 h-10 rounded-lg text-xs font-bold uppercase tracking-widest transition-all cursor-pointer",
+                        authMode === 'signup' 
+                          ? "bg-gradient-to-r from-[#123826] to-[#1c5036] text-primary border border-primary/50 shadow-sm" 
+                          : "text-white/50 hover:text-white"
                       )}
                     >
                       Sign Up
@@ -332,7 +344,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                   {error && (
                     <div className={cn(
                       "mb-6 p-4 rounded-xl text-xs font-bold",
-                      error.includes('sent') ? "bg-primary/20 text-primary" : "bg-red-500/20 text-red-400"
+                      error.includes('sent') ? "bg-primary/20 text-primary border border-primary/30" : "bg-red-500/20 text-red-300 border border-red-500/30"
                     )}>
                       {error}
                     </div>
@@ -347,9 +359,9 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                           onChange={(e) => setUsername(e.target.value)}
                           placeholder="Create Username" 
                           disabled={loading}
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-white text-base placeholder-white/20"
+                          className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-white text-base placeholder-white/30"
                         />
-                        <p className="text-[9px] text-[#d8c39b] font-serif font-bold italic mt-2 uppercase tracking-wide text-left pl-2">
+                        <p className="text-[9px] text-primary font-serif font-bold italic mt-2 uppercase tracking-wide text-left pl-2">
                           Optional: Use a bespoke nickname for your user profile and taste reviews.
                         </p>
                       </div>
@@ -361,7 +373,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email Address" 
                       disabled={loading}
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-base"
+                      className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-white placeholder-white/30 text-base"
                     />
                     
                     <div className="relative">
@@ -371,12 +383,12 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder={authMode === 'signup' ? "Create Password" : "Password (Optional for Magic Link)"} 
                         disabled={loading}
-                        className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 pr-14 outline-none focus:border-primary transition-all disabled:opacity-50 text-base"
+                        className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 pr-14 outline-none focus:border-primary transition-all disabled:opacity-50 text-white placeholder-white/30 text-base"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/40 hover:text-white transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/50 hover:text-primary transition-colors cursor-pointer"
                       >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -384,16 +396,16 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                     
                     {authMode === 'signup' && (
                       <div className="mb-4">
-                        <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 block text-left ml-2">Club ID / Access Code</label>
+                        <label className="text-[10px] font-bold text-white/60 uppercase tracking-widest mb-2 block text-left ml-2">Club ID / Access Code</label>
                         <input 
                           type="text"
                           value={clubId}
                           onChange={(e) => setClubId(e.target.value)}
                           placeholder="e.g., underground-001"
                           disabled={loading}
-                          className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-white placeholder-white/20 text-base"
+                          className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 outline-none focus:border-primary transition-all disabled:opacity-50 text-white placeholder-white/30 text-base"
                         />
-                        <p className="text-[9px] text-[#d8c39b] mt-2 uppercase tracking-tight text-left pl-2 leading-relaxed font-serif font-bold italic">
+                        <p className="text-[9px] text-primary mt-2 uppercase tracking-tight text-left pl-2 leading-relaxed font-serif font-bold italic">
                           Enter your precise Club ID (created by your Club Operator) to join their private circle, or leave blank to join as an independent collector.
                         </p>
                       </div>
@@ -403,17 +415,17 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                       <button 
                         onClick={() => handleAuth('member')}
                         disabled={loading}
-                        className="w-full h-14 bg-primary text-black rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                        className="w-full h-14 bg-primary hover:bg-[#d4af65] text-[#123826] rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-black/40 cursor-pointer disabled:opacity-50 tracking-wider text-xs"
                       >
-                        {loading ? <Loader2 className="animate-spin" size={20} /> : (authMode === 'login' ? 'LOG IN AS MEMBER' : 'SIGN UP AS MEMBER')}
+                        {loading ? <Loader2 className="animate-spin text-[#123826]" size={20} /> : (authMode === 'login' ? 'LOG IN AS MEMBER' : 'SIGN UP AS MEMBER')}
                       </button>
                       {authMode === 'login' && (
                         <button 
                           onClick={() => handleAuth('admin')}
                           disabled={loading}
-                          className="w-full h-14 glass text-white rounded-xl font-bold active:scale-95 transition-all border-white/10 flex items-center justify-center gap-2 disabled:opacity-50"
+                          className="w-full h-14 bg-[#081810] border border-primary/40 hover:border-primary text-primary rounded-xl font-bold active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 tracking-wider text-xs"
                         >
-                          {loading ? <Loader2 className="animate-spin" size={20} /> : 'LOG IN AS ADMIN'}
+                          {loading ? <Loader2 className="animate-spin text-primary" size={20} /> : 'LOG IN AS ADMIN'}
                         </button>
                       )}
                     </div>
@@ -423,41 +435,41 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
 
               {showClubs && (
                 <div>
-                  <h3 className="text-3xl font-serif text-white mb-2">Explore Clubs</h3>
-                  <p className="text-sm text-on-surface-variant mb-8">Join the world's most exclusive whisky circles.</p>
+                  <h3 className="text-3xl font-serif text-[#FAF4E5] mb-2">Explore Clubs</h3>
+                  <p className="text-sm text-[#E3EDE7]/80 mb-8 font-light">Join the world's most exclusive whisky circles.</p>
                   
                   {clubsLoading ? (
-                    <div className="flex flex-col items-center justify-center py-20 opacity-40">
-                      <Loader2 className="animate-spin mb-4" size={32} />
-                      <p className="text-[10px] uppercase tracking-[0.2em] font-bold">Verifying Thresholds...</p>
+                    <div className="flex flex-col items-center justify-center py-20 opacity-60">
+                      <Loader2 className="animate-spin mb-4 text-primary" size={32} />
+                      <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-primary">Verifying Thresholds...</p>
                     </div>
                   ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
                       {clubs.map((club) => (
                         <div 
                           key={club.id} 
                           onClick={() => setExpandedClubId(expandedClubId === club.id ? null : club.id)}
                           className={cn(
-                            "p-6 bg-white/5 border rounded-2xl transition-all cursor-pointer group",
-                            expandedClubId === club.id ? "border-primary/50 bg-white/[0.08]" : "border-white/10 hover:border-primary/30"
+                            "p-6 bg-[#081810]/80 border rounded-2xl transition-all cursor-pointer group",
+                            expandedClubId === club.id ? "border-primary bg-[#123826]/80 shadow-md" : "border-primary/25 hover:border-primary/60"
                           )}
                         >
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <h4 className={cn(
                                 "text-lg font-serif transition-colors",
-                                expandedClubId === club.id ? "text-primary" : "text-white group-hover:text-primary/80"
+                                expandedClubId === club.id ? "text-primary" : "text-[#FAF4E5] group-hover:text-primary"
                               )}>
                                 {club.name}
                               </h4>
-                              <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] mt-2 font-bold">
+                              <p className="text-[10px] text-white/50 uppercase tracking-[0.2em] mt-2 font-bold">
                                 {club.location || club.city || 'GLOBAL'} {club.members && `• ${club.members} Members`}
                               </p>
                             </div>
                             <ChevronRight 
                               className={cn(
                                 "transition-transform duration-300",
-                                expandedClubId === club.id ? "rotate-90 text-primary" : "text-white/20 group-hover:text-white/40"
+                                expandedClubId === club.id ? "rotate-90 text-primary" : "text-primary/60 group-hover:text-primary"
                               )} 
                               size={20} 
                             />
@@ -472,8 +484,8 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                                 transition={{ duration: 0.3, ease: "easeOut" }}
                                 className="overflow-hidden"
                               >
-                                <div className="pt-4 border-t border-white/10">
-                                  <p className="text-sm text-on-surface-variant leading-relaxed">
+                                <div className="pt-4 border-t border-primary/20">
+                                  <p className="text-sm text-[#E3EDE7]/80 leading-relaxed font-light">
                                     {club.description || "An exclusive community of whisky enthusiasts dedicated to rare selections and refined experiences."}
                                   </p>
                                 </div>
@@ -490,35 +502,35 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
               {showSubscription && (
                 <div className="text-center max-w-md mx-auto">
                   <span className="text-[10px] font-bold text-primary tracking-widest uppercase mb-2 block">Membership Club Circle</span>
-                  <h3 className="text-4xl font-serif text-white mb-4">Select Standing</h3>
-                  <p className="text-sm text-white/60 mb-6 leading-relaxed">
+                  <h3 className="text-4xl font-serif text-[#FAF4E5] mb-4">Select Standing</h3>
+                  <p className="text-sm text-[#E3EDE7]/80 mb-6 leading-relaxed font-light">
                     Once you make your profile, activate your standing to unlock exclusive distillery drops, priority masterclasses, and complete cellar tools.
                   </p>
                   
                   {/* Options Display */}
                   <div className="space-y-3 mb-8">
-                    <div className="bg-primary/5 hover:bg-primary/10 border border-primary/30 p-5 rounded-2xl flex items-center justify-between text-left transition-all">
+                    <div className="bg-[#081810]/80 hover:bg-[#123826]/70 border border-primary/30 hover:border-primary/60 p-5 rounded-2xl flex items-center justify-between text-left transition-all">
                       <div>
-                        <span className="font-serif font-bold text-white text-base block">Monthly Plan</span>
-                        <span className="text-xs text-white/40 block mt-0.5">Cancel anytime</span>
+                        <span className="font-serif font-bold text-[#FAF4E5] text-base block">Monthly Plan</span>
+                        <span className="text-xs text-white/50 block mt-0.5">Cancel anytime</span>
                       </div>
                       <div className="text-right">
                         <span className="text-xl font-mono text-primary font-bold">R 250</span>
-                        <span className="text-[10px] text-white/40 block">/ month</span>
+                        <span className="text-[10px] text-white/50 block">/ month</span>
                       </div>
                     </div>
 
-                    <div className="bg-white/5 hover:bg-white/[0.08] border border-white/10 p-5 rounded-2xl flex items-center justify-between text-left transition-all relative">
-                      <div className="absolute top-2 right-4 bg-primary text-black text-[7.5px] font-extrabold uppercase px-2 py-0.5 rounded-full tracking-widest">
+                    <div className="bg-[#081810]/80 hover:bg-[#123826]/70 border border-primary/40 hover:border-primary p-5 rounded-2xl flex items-center justify-between text-left transition-all relative">
+                      <div className="absolute top-2 right-4 bg-primary text-[#123826] text-[7.5px] font-extrabold uppercase px-2 py-0.5 rounded-full tracking-widest">
                         Best Value (Save R600)
                       </div>
                       <div>
-                        <span className="font-serif font-bold text-white text-base block">Annual Plan</span>
-                        <span className="text-xs text-white/40 block mt-0.5">Recurring billing annually</span>
+                        <span className="font-serif font-bold text-[#FAF4E5] text-base block">Annual Plan</span>
+                        <span className="text-xs text-white/50 block mt-0.5">Recurring billing annually</span>
                       </div>
                       <div className="text-right">
                         <span className="text-xl font-mono text-primary font-bold">R 2400</span>
-                        <span className="text-[10px] text-white/40 block">/ year</span>
+                        <span className="text-[10px] text-white/50 block">/ year</span>
                       </div>
                     </div>
                   </div>
@@ -529,7 +541,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                       setAuthMode('signup');
                       setShowLogin(true);
                     }}
-                    className="w-full h-16 bg-primary text-black rounded-full font-bold shadow-xl shadow-primary/20 active:scale-95 transition-all uppercase tracking-widest text-xs"
+                    className="w-full h-16 bg-primary hover:bg-[#d4af65] text-[#123826] rounded-full font-bold shadow-xl shadow-black/50 active:scale-95 transition-all uppercase tracking-widest text-xs cursor-pointer"
                   >
                     CONTINUE TO CREATE PROFILE
                   </button>
@@ -538,33 +550,33 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
 
               {showAdminSignup && (
                 <div>
-                  <h3 className="text-3xl font-serif text-white mb-2">Become a Club</h3>
-                  <p className="text-sm text-on-surface-variant mb-8">Digitize your hospitality experience with PROOF.</p>
+                  <h3 className="text-3xl font-serif text-[#FAF4E5] mb-2">Become a Club</h3>
+                  <p className="text-sm text-[#E3EDE7]/80 mb-8 font-light">Digitize your hospitality experience with PROOF.</p>
                   <div className="space-y-4">
                     <input 
                       type="text" 
                       placeholder="Club Name" 
                       value={adminClubName}
                       onChange={(e) => setAdminClubName(e.target.value)}
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary transition-all" 
+                      className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 outline-none focus:border-primary transition-all text-white placeholder-white/30" 
                     />
                     <input 
                       type="email" 
                       placeholder="Contact Email" 
                       value={adminEmail}
                       onChange={(e) => setAdminEmail(e.target.value)}
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-xl px-6 outline-none focus:border-primary transition-all" 
+                      className="w-full h-14 bg-[#081810]/90 border border-primary/30 rounded-xl px-6 outline-none focus:border-primary transition-all text-white placeholder-white/30" 
                     />
                     <textarea 
                       placeholder="Proposed Club Details" 
                       value={adminDetails}
                       onChange={(e) => setAdminDetails(e.target.value)}
-                      className="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-6 outline-none focus:border-primary transition-all resize-none" 
+                      className="w-full h-32 bg-[#081810]/90 border border-primary/30 rounded-xl p-6 outline-none focus:border-primary transition-all resize-none text-white placeholder-white/30" 
                     />
                     
-                    <div className="p-6 bg-primary/10 border border-primary/20 rounded-2xl mb-4">
+                    <div className="p-6 bg-[#081810]/90 border border-primary/30 rounded-2xl mb-4">
                       <p className="text-[10px] font-bold text-primary tracking-widest mb-1 uppercase">PLATFORM FEE</p>
-                      <p className="text-2xl font-serif text-white">$149.00 <span className="text-sm text-white/40">/ month</span></p>
+                      <p className="text-2xl font-serif text-[#FAF4E5]">$149.00 <span className="text-sm text-white/50">/ month</span></p>
                     </div>
 
                     <button 
@@ -573,7 +585,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
                         const body = encodeURIComponent(`Club Name: ${adminClubName}\nContact Email: ${adminEmail}\n\nProposed Club Details:\n${adminDetails}`);
                         window.location.href = `mailto:proofadmin@gmail.com?subject=${subject}&body=${body}`;
                       }}
-                      className="w-full h-16 bg-primary text-black rounded-full font-bold active:scale-95 transition-transform"
+                      className="w-full h-16 bg-primary hover:bg-[#d4af65] text-[#123826] rounded-full font-bold active:scale-95 transition-transform tracking-widest text-xs uppercase cursor-pointer"
                     >
                       REQUEST
                     </button>

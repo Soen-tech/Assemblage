@@ -12,7 +12,7 @@ interface BottomNavProps {
 export default function BottomNav({ currentView, userRole, onViewChange }: BottomNavProps) {
   const baseItems = [
     { id: 'home', icon: Home, label: 'Home' },
-    //{ id: 'boutique', icon: ShoppingBag, label: 'Boutique' },
+    { id: 'boutique', icon: ShoppingBag, label: 'Boutique' },
     { id: 'journal', icon: BookOpen, label: 'Journal' },
     { id: 'chat', icon: MessageSquare, label: 'Concierge' },
     { id: 'events', icon: Ticket, label: 'Events' },
@@ -26,7 +26,7 @@ export default function BottomNav({ currentView, userRole, onViewChange }: Botto
   const items = [...baseItems, ...adminItems];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 glass border-t border-white/5 pb-safe z-50">
+    <nav className="fixed bottom-0 left-0 right-0 glass border-t border-stone-200/80 pb-safe z-50">
       <div className="flex justify-around items-center h-20 max-w-lg mx-auto px-4">
         {items.map((item) => {
           const isActive = currentView === item.id;
@@ -36,7 +36,7 @@ export default function BottomNav({ currentView, userRole, onViewChange }: Botto
               onClick={() => onViewChange(item.id as View)}
               className={cn(
                 "flex flex-col items-center justify-center gap-1 transition-colors relative px-3 py-2 rounded-2xl",
-                isActive ? "text-primary bg-primary/10" : "text-white/40 hover:text-white/60"
+                isActive ? "text-secondary bg-secondary/10" : "text-on-surface/50 hover:text-secondary"
               )}
               id={`nav-${item.id}`}
             >
@@ -45,7 +45,7 @@ export default function BottomNav({ currentView, userRole, onViewChange }: Botto
               {isActive && (
                 <motion.div
                   layoutId="active-indicator"
-                  className="absolute -top-1 w-1 h-1 bg-primary rounded-full"
+                  className="absolute -top-1 w-1.5 h-1.5 bg-primary rounded-full shadow-sm"
                 />
               )}
             </button>

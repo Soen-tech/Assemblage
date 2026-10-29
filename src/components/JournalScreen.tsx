@@ -156,7 +156,8 @@ export default function JournalScreen({
   return (
     <div className="flex-1 px-6 pt-6 pb-32">
       <header className="mb-8">
-        <h2 className="text-headline-lg mb-2">Tasting Journal</h2>
+        <span className="text-[10px] font-extrabold text-primary tracking-[0.2em] uppercase mb-2 block">Personal Cellar</span>
+        <h2 className="text-4xl font-serif text-secondary mb-2 font-semibold">Tasting Journal</h2>
         <p className="text-sm text-on-surface-variant leading-relaxed">
           A curated archive of your olfactory and gustatory journeys through the world's finest distillations.
         </p>
@@ -164,23 +165,23 @@ export default function JournalScreen({
 
       <div className="flex flex-col gap-4 mb-8">
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40" size={18} />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" size={18} />
           <input 
             type="text" 
             placeholder="Search by distillery or region..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-surface-container h-12 pl-12 pr-4 rounded-xl border border-white/5 focus:border-primary/50 outline-none transition-colors"
+            className="w-full bg-surface-container h-12 pl-12 pr-4 rounded-xl border border-stone-200/80 focus:border-primary/70 text-on-surface outline-none transition-colors shadow-xs"
           />
         </div>
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-          <button className="flex-shrink-0 flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-bold">
-            <Filter size={14} /> Filter
+          <button className="flex-shrink-0 flex items-center gap-2 bg-secondary border border-secondary text-white px-4 py-2 rounded-full text-xs font-bold cursor-pointer shadow-xs">
+            <Filter size={14} /> All Logs
           </button>
-          <button className="flex-shrink-0 bg-primary/10 border border-primary/20 text-primary px-4 py-2 rounded-full text-xs font-bold">
+          <button className="flex-shrink-0 bg-surface-container border border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-secondary px-4 py-2 rounded-full text-xs font-bold cursor-pointer transition-colors">
             Single Malt
           </button>
-          <button className="flex-shrink-0 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-bold">
+          <button className="flex-shrink-0 bg-surface-container border border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-secondary px-4 py-2 rounded-full text-xs font-bold cursor-pointer transition-colors">
             Peated
           </button>
         </div>
@@ -216,14 +217,14 @@ export default function JournalScreen({
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-x-4 top-[5%] bottom-[5%] bg-surface-container rounded-[2rem] border border-white/10 z-[101] overflow-hidden flex flex-col max-w-2xl mx-auto"
+              className="fixed inset-x-4 top-[5%] bottom-[5%] bg-white rounded-[2rem] border border-stone-200 z-[101] overflow-hidden flex flex-col max-w-2xl mx-auto shadow-2xl"
             >
-              <div className="relative h-[260px] flex-shrink-0 bg-black/40">
+              <div className="relative h-[260px] flex-shrink-0 bg-stone-900">
                 {/* Blurred Background */}
                 <img 
                   src={selectedEntry.image || undefined} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30" 
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40" 
                 />
                 {/* Full Image */}
                 <img 
@@ -231,12 +232,12 @@ export default function JournalScreen({
                   alt={selectedEntry.name} 
                   className="relative w-full h-full object-contain" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                 
                 <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
                   <button 
                     onClick={() => setSelectedEntry(null)}
-                    className="w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 text-white hover:bg-black/60 transition-colors"
+                    className="w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 text-white hover:bg-black/70 transition-colors cursor-pointer"
                   >
                     <X size={20} />
                   </button>
@@ -254,15 +255,15 @@ export default function JournalScreen({
                         setSelectedEntry(null);
                       }
                     }}
-                    className="w-10 h-10 bg-red-500/20 backdrop-blur-md hover:bg-red-500/40 text-red-400 border border-red-500/20 active:scale-[0.95] rounded-full flex items-center justify-center transition-all flex-shrink-0"
+                    className="w-10 h-10 bg-red-500/20 backdrop-blur-md hover:bg-red-500/40 text-red-400 border border-red-500/20 active:scale-[0.95] rounded-full flex items-center justify-center transition-all flex-shrink-0 cursor-pointer"
                     title="Delete Entry"
                   >
                     <Trash2 size={16} />
                   </button>
                 </div>
                 <div className="absolute top-6 left-6 flex gap-2 z-10">
-                  <span className="px-3 py-1 bg-primary text-on-primary rounded-full text-[10px] font-bold uppercase tracking-widest">
-                    Add Rating
+                  <span className="px-3 py-1 bg-primary text-secondary rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm">
+                    Verified Pour
                   </span>
                   <button 
                     onClick={(e) => {
@@ -275,62 +276,62 @@ export default function JournalScreen({
                       setTempAroma(currentAroma);
                       setTempValue(currentValue);
                     }}
-                    className="px-3 py-1 bg-black/45 hover:bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-secondary uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95"
+                    className="px-3 py-1 bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-bold text-primary uppercase tracking-widest flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-sm"
                     title="Click to edit dimension ratings"
                   >
-                    <Star size={10} className="fill-secondary" /> {(((selectedEntry.tasteRating ?? selectedEntry.rating ?? 5) + (selectedEntry.aromaRating ?? selectedEntry.rating ?? 5) + (selectedEntry.valueRating ?? selectedEntry.rating ?? 5)) / 3).toFixed(1)}
+                    <Star size={10} className="fill-primary" /> {(((selectedEntry.tasteRating ?? selectedEntry.rating ?? 5) + (selectedEntry.aromaRating ?? selectedEntry.rating ?? 5) + (selectedEntry.valueRating ?? selectedEntry.rating ?? 5)) / 3).toFixed(1)}
                   </button>
                 </div>
               </div>
 
               <div className="flex-1 overflow-y-auto p-8 pt-4">
                 <div className="mb-6">
-                  <p className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1">{selectedEntry.distillery}</p>
-                  <h3 className="font-serif text-3xl text-white">
+                  <p className="text-[10px] font-extrabold text-primary uppercase tracking-[0.2em] mb-1">{selectedEntry.distillery}</p>
+                  <h3 className="font-serif text-3xl text-secondary font-semibold">
                     {selectedEntry.name}
                   </h3>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <Calendar className="text-secondary mb-2" size={18} />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Tasted On</p>
-                    <p className="text-sm text-white font-medium">{selectedEntry.date}</p>
+                  <div className="p-4 bg-surface-container rounded-2xl border border-stone-200">
+                    <Calendar className="text-primary mb-2" size={18} />
+                    <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-0.5">Tasted On</p>
+                    <p className="text-sm text-secondary font-medium">{selectedEntry.date}</p>
                   </div>
-                  <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <MapPin className="text-secondary mb-2" size={18} />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Origin</p>
-                    <p className="text-sm text-white font-medium">{selectedEntry.region || "Highlands"}</p>
+                  <div className="p-4 bg-surface-container rounded-2xl border border-stone-200">
+                    <MapPin className="text-primary mb-2" size={18} />
+                    <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-0.5">Origin</p>
+                    <p className="text-sm text-secondary font-medium">{selectedEntry.region || "Highlands"}</p>
                   </div>
                 </div>
 
                 {selectedEntry.swriProfile && (
                   <div className="mb-10">
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                       <Info size={12} /> Flavour Architecture
                     </h4>
-                    <div className="p-6 bg-white/5 rounded-3xl border border-white/5">
+                    <div className="p-6 bg-surface-container rounded-3xl border border-stone-200">
                       <div className="h-64 flex items-center justify-center mb-6">
                         <RadarChart profile={selectedEntry.swriProfile} />
                       </div>
                       
                       {/* Metric Grid like ResultScreen */}
-                      <div className="grid grid-cols-4 gap-2 border-t border-white/10 pt-6 text-center">
+                      <div className="grid grid-cols-4 gap-2 border-t border-stone-200 pt-6 text-center">
                         <div>
-                          <p className="text-lg font-serif text-white">{selectedEntry.swriProfile?.intensity || "--"}</p>
-                          <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">Intensity</p>
+                          <p className="text-lg font-serif text-secondary font-semibold">{selectedEntry.swriProfile?.intensity || "--"}</p>
+                          <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">Intensity</p>
                         </div>
                         <div>
-                          <p className="text-lg font-serif text-white">{getDominantFlavour(selectedEntry.swriProfile)}</p>
-                          <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">Dominant</p>
+                          <p className="text-lg font-serif text-secondary font-semibold">{getDominantFlavour(selectedEntry.swriProfile)}</p>
+                          <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">Dominant</p>
                         </div>
                         <div>
-                          <p className="text-lg font-serif text-white">{selectedEntry.age || "NAS"}</p>
-                          <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">Maturity</p>
+                          <p className="text-lg font-serif text-secondary font-semibold">{selectedEntry.age || "NAS"}</p>
+                          <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">Maturity</p>
                         </div>
                         <div>
-                          <p className="text-lg font-serif text-white">{selectedEntry.abv || "--"}</p>
-                          <p className="text-[8px] text-on-surface/40 font-bold uppercase tracking-widest mt-1">ABV</p>
+                          <p className="text-lg font-serif text-secondary font-semibold">{selectedEntry.abv || "--"}</p>
+                          <p className="text-[8px] text-stone-500 font-bold uppercase tracking-widest mt-1">ABV</p>
                         </div>
                       </div>
                     </div>
@@ -339,10 +340,10 @@ export default function JournalScreen({
 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">Tasting Notes</h4>
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">Tasting Notes</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedEntry.tastingNotes.map((note) => (
-                        <span key={note} className="px-4 py-2 bg-primary/10 text-primary border border-primary/20 rounded-xl text-xs font-medium">
+                        <span key={note} className="px-4 py-2 bg-secondary/5 text-secondary border border-secondary/15 rounded-xl text-xs font-bold uppercase tracking-wider">
                           {note}
                         </span>
                       ))}
@@ -351,15 +352,15 @@ export default function JournalScreen({
 
                   {/* Prominent Notes like ResultScreen */}
                   <div className="space-y-4">
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Prominent Notes</h4>
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Prominent Notes</h4>
                     <div className="space-y-3">
                       {getProminentNotes(selectedEntry).map((note, idx) => (
-                        <div key={idx} className="bg-white/5 border border-white/5 p-4 rounded-2xl flex gap-4">
+                        <div key={idx} className="bg-surface-container border border-stone-200 p-4 rounded-2xl flex gap-4">
                           <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary text-xl flex-shrink-0">
                             {note.icon}
                           </div>
                           <div>
-                            <h4 className="text-sm font-bold text-white mb-1 tracking-tight">{note.label}</h4>
+                            <h4 className="text-sm font-bold text-secondary mb-1 tracking-tight">{note.label}</h4>
                             <p className="text-xs text-on-surface-variant leading-relaxed">{note.desc}</p>
                           </div>
                         </div>
@@ -372,8 +373,8 @@ export default function JournalScreen({
                     const textureDetails = getTextureDetails(selectedEntry);
                     return (
                       <div>
-                        <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">{textureDetails.label}</h4>
-                        <div className="relative h-32 rounded-3xl overflow-hidden border border-white/5 group">
+                        <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">{textureDetails.label}</h4>
+                        <div className="relative h-32 rounded-3xl overflow-hidden border border-stone-200 group">
                           <img 
                             src={journalTextureImg} 
                             onError={() => {
@@ -387,7 +388,7 @@ export default function JournalScreen({
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                           <div className="absolute bottom-4 left-6">
                             <p className="text-[8px] font-bold text-primary tracking-widest uppercase mb-0.5">Mouthfeel & Body</p>
-                            <p className="text-md font-serif text-white">
+                            <p className="text-md font-serif text-white font-medium">
                               {textureDetails.value}
                             </p>
                           </div>
@@ -397,9 +398,9 @@ export default function JournalScreen({
                   })()}
 
                   {/* Rating Dimensions Panel */}
-                  <div className="p-5 bg-white/5 rounded-3xl border border-white/5 space-y-4">
+                  <div className="p-5 bg-surface-container rounded-3xl border border-stone-200 space-y-4">
                     <div className="flex justify-between items-center">
-                      <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Tasting Dimensions</h4>
+                      <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Tasting Dimensions</h4>
                       <button 
                         onClick={() => {
                           const currentTaste = selectedEntry.tasteRating ?? selectedEntry.rating ?? 5;
@@ -410,57 +411,57 @@ export default function JournalScreen({
                           setTempAroma(currentAroma);
                           setTempValue(currentValue);
                         }}
-                        className="text-[10px] font-bold text-primary hover:underline cursor-pointer transition-all"
+                        className="text-[10px] font-bold text-primary hover:underline cursor-pointer transition-all uppercase tracking-wider"
                       >
                         Adjust dimensions
                       </button>
                     </div>
                     <div className="grid grid-cols-3 gap-3">
-                      <div className="bg-black/20 p-4 rounded-2xl border border-white/5 text-center">
-                        <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Taste</p>
+                      <div className="bg-white p-4 rounded-2xl border border-stone-200 text-center shadow-xs">
+                        <p className="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1.5">Taste</p>
                         <div className="flex justify-center gap-0.5 mb-1.5">
                           {[...Array(5)].map((_, i) => (
                             <Star 
                               key={i} 
                               size={10} 
-                              className={i < (selectedEntry.tasteRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-white/10"} 
+                              className={i < (selectedEntry.tasteRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-stone-300"} 
                             />
                           ))}
                         </div>
-                        <p className="text-xs font-mono font-bold text-white">{(selectedEntry.tasteRating ?? selectedEntry.rating ?? 5)}/5</p>
+                        <p className="text-xs font-mono font-bold text-secondary">{(selectedEntry.tasteRating ?? selectedEntry.rating ?? 5)}/5</p>
                       </div>
-                      <div className="bg-black/20 p-4 rounded-2xl border border-white/5 text-center">
-                        <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Aroma</p>
+                      <div className="bg-white p-4 rounded-2xl border border-stone-200 text-center shadow-xs">
+                        <p className="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1.5">Aroma</p>
                         <div className="flex justify-center gap-0.5 mb-1.5">
                           {[...Array(5)].map((_, i) => (
                             <Star 
                               key={i} 
                               size={10} 
-                              className={i < (selectedEntry.aromaRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-white/10"} 
+                              className={i < (selectedEntry.aromaRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-stone-300"} 
                             />
                           ))}
                         </div>
-                        <p className="text-xs font-mono font-bold text-white">{(selectedEntry.aromaRating ?? selectedEntry.rating ?? 5)}/5</p>
+                        <p className="text-xs font-mono font-bold text-secondary">{(selectedEntry.aromaRating ?? selectedEntry.rating ?? 5)}/5</p>
                       </div>
-                      <div className="bg-black/20 p-4 rounded-2xl border border-white/5 text-center">
-                        <p className="text-[9px] text-white/40 font-bold uppercase tracking-widest mb-1.5">Value</p>
+                      <div className="bg-white p-4 rounded-2xl border border-stone-200 text-center shadow-xs">
+                        <p className="text-[9px] text-stone-500 font-bold uppercase tracking-widest mb-1.5">Value</p>
                         <div className="flex justify-center gap-0.5 mb-1.5">
                           {[...Array(5)].map((_, i) => (
                             <Star 
                               key={i} 
                               size={10} 
-                              className={i < (selectedEntry.valueRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-white/10"} 
+                              className={i < (selectedEntry.valueRating ?? selectedEntry.rating ?? 5) ? "fill-primary text-primary" : "text-stone-300"} 
                             />
                           ))}
                         </div>
-                        <p className="text-xs font-mono font-bold text-white">{(selectedEntry.valueRating ?? selectedEntry.rating ?? 5)}/5</p>
+                        <p className="text-xs font-mono font-bold text-secondary">{(selectedEntry.valueRating ?? selectedEntry.rating ?? 5)}/5</p>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">Your Review</h4>
-                    <p className="text-sm text-on-surface-variant leading-relaxed whitespace-pre-line">
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">Your Review</h4>
+                    <p className="text-sm text-stone-700 leading-relaxed whitespace-pre-line">
                       {selectedEntry.description}
                     </p>
                   </div>
@@ -487,49 +488,49 @@ export default function JournalScreen({
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-surface-container rounded-[2rem] border border-white/10 z-[111] overflow-hidden p-6 shadow-2xl"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-white rounded-[2rem] border border-stone-200 z-[111] overflow-hidden p-6 shadow-2xl"
             >
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1">Tasting Metrics</h4>
-                  <h3 className="font-serif text-xl text-white">Rate Whisky</h3>
+                  <h3 className="font-serif text-xl text-secondary font-semibold">Rate Whisky</h3>
                 </div>
                 <button 
                   type="button"
                   onClick={() => setEditingRatingsEntry(null)}
-                  className="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center border border-white/15 text-white/60 hover:text-white transition-colors cursor-pointer"
+                  className="w-8 h-8 bg-surface-container rounded-full flex items-center justify-center border border-stone-200 text-stone-500 hover:text-secondary transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
               </div>
 
               <p className="text-xs text-on-surface-variant mb-6 leading-relaxed">
-                Adjust each dimensional criterion to calibrate the complete flavor profile evaluation for <span className="text-white font-medium">{editingRatingsEntry.name}</span>.
+                Adjust each dimensional criterion to calibrate the complete flavor profile evaluation for <span className="text-secondary font-semibold">{editingRatingsEntry.name}</span>.
               </p>
 
               <div className="space-y-6 mb-8">
                 {/* Taste Rating */}
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold text-white tracking-wide">Taste</span>
+                    <span className="text-sm font-bold text-secondary tracking-wide">Taste</span>
                     <span className="text-xs font-mono text-primary font-bold">{tempTaste}/5</span>
                   </div>
-                  <div className="flex gap-2 justify-between bg-black/20 p-3 rounded-2xl border border-white/5">
+                  <div className="flex gap-2 justify-between bg-surface-container p-3 rounded-2xl border border-stone-200">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
                         type="button"
                         key={star}
                         onClick={() => setTempTaste(star)}
-                        className="p-1 hover:scale-110 active:scale-95 transition-transform"
+                        className="p-1 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                       >
                         <Star 
                           size={24} 
-                          className={star <= tempTaste ? "fill-primary text-primary" : "text-white/10 hover:text-white/30"} 
+                          className={star <= tempTaste ? "fill-primary text-primary" : "text-stone-300 hover:text-stone-400"} 
                         />
                       </button>
                     ))}
                   </div>
-                  <p className="text-[10px] text-on-surface-variant/60 italic leading-relaxed">
+                  <p className="text-[10px] text-on-surface-variant italic leading-relaxed">
                     Flavor development, complexity, initial palate, and subsequent finish.
                   </p>
                 </div>
@@ -537,25 +538,25 @@ export default function JournalScreen({
                 {/* Aroma Rating */}
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold text-white tracking-wide">Aroma (Nose)</span>
+                    <span className="text-sm font-bold text-secondary tracking-wide">Aroma (Nose)</span>
                     <span className="text-xs font-mono text-primary font-bold">{tempAroma}/5</span>
                   </div>
-                  <div className="flex gap-2 justify-between bg-black/20 p-3 rounded-2xl border border-white/5">
+                  <div className="flex gap-2 justify-between bg-surface-container p-3 rounded-2xl border border-stone-200">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
                         type="button"
                         key={star}
                         onClick={() => setTempAroma(star)}
-                        className="p-1 hover:scale-110 active:scale-95 transition-transform"
+                        className="p-1 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                       >
                         <Star 
                           size={24} 
-                          className={star <= tempAroma ? "fill-primary text-primary" : "text-white/10 hover:text-white/30"} 
+                          className={star <= tempAroma ? "fill-primary text-primary" : "text-stone-300 hover:text-stone-400"} 
                         />
                       </button>
                     ))}
                   </div>
-                  <p className="text-[10px] text-on-surface-variant/60 italic leading-relaxed">
+                  <p className="text-[10px] text-on-surface-variant italic leading-relaxed">
                     Nesting complexity, strength of scent, peat curls, floral and cereal notes.
                   </p>
                 </div>
@@ -563,39 +564,39 @@ export default function JournalScreen({
                 {/* Value Rating */}
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold text-white tracking-wide">Value</span>
+                    <span className="text-sm font-bold text-secondary tracking-wide">Value</span>
                     <span className="text-xs font-mono text-primary font-bold">{tempValue}/5</span>
                   </div>
-                  <div className="flex gap-2 justify-between bg-black/20 p-3 rounded-2xl border border-white/5">
+                  <div className="flex gap-2 justify-between bg-surface-container p-3 rounded-2xl border border-stone-200">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
                         type="button"
                         key={star}
                         onClick={() => setTempValue(star)}
-                        className="p-1 hover:scale-110 active:scale-95 transition-transform"
+                        className="p-1 hover:scale-110 active:scale-95 transition-transform cursor-pointer"
                       >
                         <Star 
                           size={24} 
-                          className={star <= tempValue ? "fill-primary text-primary" : "text-white/10 hover:text-white/30"} 
+                          className={star <= tempValue ? "fill-primary text-primary" : "text-stone-300 hover:text-stone-400"} 
                         />
                       </button>
                     ))}
                   </div>
-                  <p className="text-[10px] text-on-surface-variant/60 italic leading-relaxed">
+                  <p className="text-[10px] text-on-surface-variant italic leading-relaxed">
                     Market affordability relative to age statement, distillery prestige, and quality.
                   </p>
                 </div>
               </div>
 
               {/* Dynamic Realtime Average Preview */}
-              <div className="bg-primary/5 p-4 rounded-2xl border border-primary/20 flex justify-between items-center mb-6">
-                <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Calibrated Average:</span>
+              <div className="bg-primary/10 p-4 rounded-2xl border border-primary/20 flex justify-between items-center mb-6">
+                <span className="text-xs font-bold text-secondary uppercase tracking-wider">Calibrated Average:</span>
                 <div className="flex items-center gap-1.5">
-                  <Star size={16} className="fill-secondary text-secondary" />
+                  <Star size={16} className="fill-primary text-primary" />
                   <span className="text-lg font-mono font-bold text-secondary">
                     {((tempTaste + tempAroma + tempValue) / 3).toFixed(1)}
                   </span>
-                  <span className="text-xs text-white/40">/ 5.0</span>
+                  <span className="text-xs text-stone-500">/ 5.0</span>
                 </div>
               </div>
 
@@ -603,7 +604,7 @@ export default function JournalScreen({
                 <button
                   type="button"
                   onClick={() => setEditingRatingsEntry(null)}
-                  className="flex-1 h-12 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-colors cursor-pointer"
+                  className="flex-1 h-12 rounded-xl bg-surface-container border border-stone-200 text-secondary font-bold hover:bg-stone-100 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -626,7 +627,7 @@ export default function JournalScreen({
                     setSelectedEntry(updated);
                     setEditingRatingsEntry(null);
                   }}
-                  className="flex-1 h-12 rounded-xl bg-primary text-black font-bold hover:brightness-110 transition-colors cursor-pointer"
+                  className="flex-1 h-12 rounded-xl bg-primary text-secondary font-extrabold hover:brightness-105 transition-all shadow-md shadow-primary/20 cursor-pointer"
                 >
                   Confirm
                 </button>
@@ -646,24 +647,24 @@ function JournalEntry({ entry, onClick }: { entry: Whisky; onClick?: () => void 
       animate={{ opacity: 1, y: 0 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className="bg-surface-container rounded-3xl overflow-hidden border border-white/5 cursor-pointer group"
+      className="bg-surface rounded-3xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-md hover:border-primary/40 cursor-pointer group transition-all"
     >
-      <div className="h-48 relative overflow-hidden">
+      <div className="h-48 relative overflow-hidden bg-stone-100">
         <img 
           src={entry.image || undefined} 
           alt={entry.name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent opacity-60" />
-        <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-          <span className="text-[10px] font-bold text-white tracking-widest uppercase">{entry.date}</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent opacity-70" />
+        <div className="absolute top-4 left-4 bg-[#123826]/85 backdrop-blur-md px-3 py-1 rounded-full border border-primary/20 shadow-xs">
+          <span className="text-[10px] font-bold text-primary tracking-widest uppercase">{entry.date}</span>
         </div>
       </div>
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <p className="text-[10px] font-semibold text-primary/60 uppercase tracking-widest mb-0.5">{entry.distillery}</p>
-            <h3 className="text-headline-md group-hover:text-primary transition-colors">{entry.name}</h3>
+            <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-0.5">{entry.distillery}</p>
+            <h3 className="text-headline-md text-secondary group-hover:text-primary transition-colors leading-tight">{entry.name}</h3>
           </div>
           {(() => {
             const taste = entry.tasteRating ?? entry.rating ?? 5;
@@ -678,28 +679,28 @@ function JournalEntry({ entry, onClick }: { entry: Whisky; onClick?: () => void 
                     <Star 
                       key={i} 
                       size={14} 
-                      className={i < roundedAvg ? "fill-secondary text-secondary" : "text-white/20"} 
+                      className={i < roundedAvg ? "fill-primary text-primary" : "text-stone-200"} 
                     />
                   ))}
                 </div>
-                <span className="text-xs font-mono font-bold text-secondary bg-secondary/10 px-1.5 py-0.5 rounded-md">{avgRating.toFixed(1)}</span>
+                <span className="text-xs font-mono font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-md">{avgRating.toFixed(1)}</span>
               </div>
             );
           })()}
         </div>
         
-        <p className="text-sm text-on-surface-variant line-clamp-2 mb-4 leading-relaxed italic opacity-80 whitespace-pre-line">
+        <p className="text-sm text-on-surface-variant line-clamp-2 mb-4 leading-relaxed italic opacity-85 whitespace-pre-line">
           {entry.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
           {entry.tastingNotes.slice(0, 3).map((note) => (
-            <span key={note} className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10 text-on-surface/40 uppercase tracking-wider">
+            <span key={note} className="text-[10px] font-bold px-3 py-1 rounded-full bg-secondary/5 border border-secondary/15 text-secondary uppercase tracking-wider">
               {note}
             </span>
           ))}
           {entry.tastingNotes.length > 3 && (
-            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10 text-on-surface/40">
+            <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-secondary/5 border border-secondary/15 text-secondary">
               +{entry.tastingNotes.length - 3}
             </span>
           )}

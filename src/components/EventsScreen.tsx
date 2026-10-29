@@ -155,19 +155,19 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
     <div className="flex-1 px-6 pt-6 pb-32">
       <header className="mb-8">
         <span className="text-[10px] font-extrabold text-primary tracking-[0.2em] uppercase mb-2 block">Cask & Craft</span>
-        <h2 className="text-4xl font-serif text-white mb-2">Club Events</h2>
-        <p className="text-sm text-white/40 leading-relaxed max-w-sm">
+        <h2 className="text-4xl font-serif text-secondary mb-2 font-semibold">Club Events</h2>
+        <p className="text-sm text-on-surface-variant leading-relaxed max-w-sm">
           Refine your palate and passions through our curated masterclasses and exclusive tasting sessions.
         </p>
       </header>
 
       {/* Persistent View Toggle Selector */}
-      <div className="flex bg-white/5 border border-white/10 rounded-2xl p-1 mb-8">
+      <div className="flex bg-surface-container border border-stone-200/80 rounded-2xl p-1 mb-8 shadow-xs">
         <button 
           onClick={() => setActiveTab('explore')}
           className={cn(
-            "flex-1 py-3 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2",
-            activeTab === 'explore' ? "bg-primary text-on-primary shadow-lg" : "text-white/60 hover:text-white"
+            "flex-1 py-3 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer",
+            activeTab === 'explore' ? "bg-secondary text-white shadow-sm" : "text-stone-600 hover:text-secondary"
           )}
         >
           <Calendar size={14} />
@@ -176,14 +176,14 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
         <button 
           onClick={() => setActiveTab('tickets')}
           className={cn(
-            "flex-1 py-3 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 relative",
-            activeTab === 'tickets' ? "bg-primary text-on-primary shadow-lg" : "text-white/60 hover:text-white"
+            "flex-1 py-3 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 relative cursor-pointer",
+            activeTab === 'tickets' ? "bg-secondary text-white shadow-sm" : "text-stone-600 hover:text-secondary"
           )}
         >
           <Ticket size={14} />
           My Tickets
           {tickets.length > 0 && (
-            <span className="ml-1 px-2 py-0.5 text-[9px] font-mono bg-secondary text-black rounded-lg">
+            <span className="ml-1 px-2 py-0.5 text-[9px] font-mono bg-primary text-secondary font-bold rounded-lg">
               {tickets.length}
             </span>
           )}
@@ -199,10 +199,10 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                 key={cat}
                 onClick={() => setSelectedSubCategory(cat)}
                 className={cn(
-                  "flex-shrink-0 px-5 py-2 rounded-full text-xs font-bold transition-all border",
+                  "flex-shrink-0 px-5 py-2 rounded-full text-xs font-bold transition-all border cursor-pointer",
                   selectedSubCategory === cat 
-                    ? "bg-primary border-primary text-on-primary" 
-                    : "bg-white/5 border-white/10 text-white/60 hover:text-white/90 hover:bg-white/10"
+                    ? "bg-secondary border-secondary text-white shadow-xs" 
+                    : "bg-surface-container border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-secondary"
                 )}
               >
                 {cat}
@@ -215,7 +215,7 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
             {loading ? (
               <div className="flex flex-col items-center justify-center py-20 gap-4">
                 <Loader2 className="animate-spin text-primary" />
-                <p className="text-xs text-white/40 uppercase tracking-widest">Fetching Event Schedule...</p>
+                <p className="text-xs text-stone-400 uppercase tracking-widest font-medium">Fetching Event Schedule...</p>
               </div>
             ) : filteredEvents.length > 0 ? (
               filteredEvents.map((event, i) => (
@@ -228,8 +228,8 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
               ))
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center">
-                <Calendar className="text-white/10 mb-4" size={48} />
-                <p className="text-white/40 italic">No exclusive events currently scheduled.</p>
+                <Calendar className="text-stone-300 mb-4" size={48} />
+                <p className="text-stone-500 italic">No exclusive events currently scheduled.</p>
               </div>
             )}
           </div>
@@ -240,35 +240,35 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
           {loadingTickets ? (
             <div className="flex flex-col items-center justify-center py-20 gap-4">
               <Loader2 className="animate-spin text-primary" />
-              <p className="text-xs text-white/40 uppercase tracking-widest">Fetching Purchased Passes...</p>
+              <p className="text-xs text-stone-400 uppercase tracking-widest font-medium">Fetching Purchased Passes...</p>
             </div>
           ) : tickets.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {tickets.map((tkt) => (
                 <div 
                   key={tkt.id} 
-                  className="relative bg-surface-container rounded-3xl border border-white/5 overflow-hidden flex flex-col p-6 shadow-xl hover:border-white/10 transition-all group"
+                  className="relative bg-surface rounded-3xl border border-stone-200/80 overflow-hidden flex flex-col p-6 shadow-sm hover:shadow-md hover:border-primary/40 transition-all group"
                 >
                   {/* Left & Right custom ticket notch circles */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-black rounded-r-full border-r border-white/5 z-10" />
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-black rounded-l-full border-l border-white/5 z-10" />
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-surface rounded-r-full border-r border-stone-200 z-10" />
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-8 bg-surface rounded-l-full border-l border-stone-200 z-10" />
                   
                   <div className="flex justify-between items-start mb-4">
                     <div className="flex gap-2 items-center">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                      <span className="text-[10px] font-bold text-green-500 uppercase tracking-widest">VALID PASS</span>
+                      <div className="w-1.5 h-1.5 bg-emerald-600 rounded-full animate-pulse" />
+                      <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-widest">VALID PASS</span>
                     </div>
-                    <span className="text-[10px] font-mono text-white/30 uppercase">
+                    <span className="text-[10px] font-mono text-stone-400 uppercase font-semibold">
                       #{String(tkt.id).substring(String(tkt.id).length - 8).toUpperCase()}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-serif text-white mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-serif text-secondary mb-2 group-hover:text-primary transition-colors font-semibold">
                     {tkt.event_name}
                   </h3>
                   
                   {/* Metadata */}
-                  <div className="flex flex-col gap-2 text-xs text-white/50 mb-4 font-mono uppercase tracking-wider">
+                  <div className="flex flex-col gap-2 text-xs text-stone-500 mb-4 font-mono uppercase tracking-wider">
                     <div className="flex items-center gap-2">
                       <Calendar size={12} className="text-primary" />
                       <span>
@@ -284,11 +284,11 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                   </div>
 
                   {/* Dashed line */}
-                  <div className="border-t border-dashed border-white/10 my-2" />
+                  <div className="border-t border-dashed border-stone-200 my-2" />
 
                   {/* Barcode / scan mock footer */}
                   <div className="flex items-center justify-between pt-2">
-                    <div className="font-mono text-[9px] text-white/20 uppercase tracking-[0.2em] select-none">
+                    <div className="font-mono text-[9px] text-stone-300 uppercase tracking-[0.2em] select-none">
                       ||||| ||| || | ||| |||| |
                     </div>
                     <div className="flex gap-2 items-center">
@@ -298,7 +298,7 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                             e.stopPropagation();
                             setOpenDropdownId(openDropdownId === tkt.id ? null : tkt.id);
                           }}
-                          className="px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-white text-[10px] font-bold flex items-center gap-1.5 transition-all"
+                          className="px-3 py-2 bg-surface-container hover:bg-stone-100 border border-stone-200 rounded-xl text-secondary text-[10px] font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
                           title="Add to Calendar"
                         >
                           <Calendar size={12} className="text-primary" />
@@ -314,14 +314,14 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                                 setOpenDropdownId(null);
                               }} 
                             />
-                            <div className="absolute right-0 bottom-full mb-2 w-48 bg-[#11161d] border border-white/10 rounded-xl shadow-2xl p-1.5 z-40 animate-in fade-in slide-in-from-bottom-2 duration-150">
+                            <div className="absolute right-0 bottom-full mb-2 w-48 bg-white border border-stone-200 rounded-xl shadow-2xl p-1.5 z-40 animate-in fade-in slide-in-from-bottom-2 duration-150">
                               <button
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   handleGoogleCalendar(tkt);
                                   setOpenDropdownId(null);
                                 }}
-                                className="w-full text-left px-3 py-2 hover:bg-white/5 text-xs text-white rounded-lg flex items-center gap-2 transition-colors"
+                                className="w-full text-left px-3 py-2 hover:bg-stone-50 text-xs text-secondary rounded-lg flex items-center gap-2 transition-colors cursor-pointer"
                               >
                                 <span className="w-2 h-2 rounded-full bg-blue-500" />
                                 Google Calendar
@@ -332,7 +332,7 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                                   handleDownloadIcs(tkt);
                                   setOpenDropdownId(null);
                                 }}
-                                className="w-full text-left px-3 py-2 hover:bg-white/5 text-xs text-white rounded-lg flex items-center gap-2 transition-colors"
+                                className="w-full text-left px-3 py-2 hover:bg-stone-50 text-xs text-secondary rounded-lg flex items-center gap-2 transition-colors cursor-pointer"
                               >
                                 <span className="w-2 h-2 rounded-full bg-amber-500" />
                                 iCal / Outlook File (.ics)
@@ -344,7 +344,7 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
 
                       <button 
                         onClick={() => setSelectedTicket(tkt)}
-                        className="px-4 py-2 bg-primary/15 border border-primary/30 text-primary text-[10px] font-bold rounded-xl hover:bg-primary/25 transition-all"
+                        className="px-4 py-2 bg-primary text-secondary text-[10px] font-bold rounded-xl hover:bg-primary/90 transition-all shadow-sm cursor-pointer"
                       >
                         View QR Pass
                       </button>
@@ -354,17 +354,17 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 text-center bg-white/5 border border-white/5 rounded-[2rem] p-8">
-              <Ticket className="text-white/15 mb-4 animate-bounce" size={48} />
-              <h4 className="text-lg font-serif text-white mb-2">No Active Tickets Found</h4>
-              <p className="text-xs text-white/40 max-w-xs mx-auto mb-6">
-                You haven't bought any masterclass entry passes yet. Discover elite events to purchase your pass!
+            <div className="flex flex-col items-center justify-center py-20 text-center bg-surface rounded-[2rem] border border-stone-200/80 p-8 shadow-xs">
+              <Ticket className="text-stone-300 mb-4 animate-bounce" size={48} />
+              <h4 className="text-lg font-serif text-secondary mb-2 font-semibold">No Active Tickets Found</h4>
+              <p className="text-xs text-on-surface-variant max-w-xs mx-auto mb-6">
+                You haven't reserved any passes yet. Explore upcoming masterclasses and tastings.
               </p>
               <button 
                 onClick={() => setActiveTab('explore')}
-                className="px-6 py-3 bg-primary text-on-primary text-xs font-bold rounded-2xl active:scale-[0.98] transition-transform"
+                className="px-6 py-2.5 bg-primary text-secondary text-xs font-bold uppercase tracking-wider rounded-xl shadow-sm hover:bg-primary/90 transition-all cursor-pointer"
               >
-                Browse Exclusive Events
+                Browse Masterclasses
               </button>
             </div>
           )}
@@ -386,14 +386,14 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed inset-x-4 top-[5%] bottom-[5%] bg-surface-container rounded-[2rem] border border-white/10 z-[101] overflow-hidden flex flex-col max-w-2xl mx-auto"
+              className="fixed inset-x-4 top-[5%] bottom-[5%] bg-white rounded-[2rem] border border-stone-200 z-[101] overflow-hidden flex flex-col max-w-2xl mx-auto shadow-2xl"
             >
-              <div className="relative h-[260px] flex-shrink-0 bg-black/40">
+              <div className="relative h-[260px] flex-shrink-0 bg-stone-900">
                 {/* Blurred Background */}
                 <img 
                   src={selectedEvent.image || undefined} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30" 
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40" 
                 />
                 {/* Full Image */}
                 <img 
@@ -402,20 +402,20 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                   className="relative w-full h-full object-contain" 
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
                 
                 <button 
                   onClick={() => setSelectedEvent(null)}
-                  className="absolute top-6 right-6 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10 text-white z-10 hover:bg-black/60 transition-colors"
+                  className="absolute top-6 right-6 w-10 h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 text-white z-10 hover:bg-black/70 transition-colors cursor-pointer"
                 >
                   <X size={20} />
                 </button>
                 <div className="absolute top-6 left-6 flex gap-2">
-                  <span className="px-3 py-1 bg-primary text-on-primary rounded-full text-[10px] font-bold uppercase tracking-widest">
+                  <span className="px-3 py-1 bg-primary text-secondary rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm">
                     {selectedEvent.category}
                   </span>
                   {selectedEvent.rating && (
-                    <span className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-secondary uppercase tracking-widest">
+                    <span className="px-3 py-1 bg-black/50 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-bold text-primary uppercase tracking-widest">
                       ★ {selectedEvent.rating}
                     </span>
                   )}
@@ -423,37 +423,37 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
               </div>
 
               <div className="flex-1 overflow-y-auto p-8 pt-4">
-                <h3 className="font-serif text-3xl text-white mb-6">
+                <h3 className="font-serif text-3xl text-secondary font-semibold mb-6">
                   {selectedEvent.title}
                 </h3>
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <Calendar className="text-secondary mb-2" size={18} />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Date</p>
-                    <p className="text-sm text-white font-medium">{selectedEvent.date}</p>
+                  <div className="p-4 bg-surface-container rounded-2xl border border-stone-200">
+                    <Calendar className="text-primary mb-2" size={18} />
+                    <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-0.5">Date</p>
+                    <p className="text-sm text-secondary font-medium">{selectedEvent.date}</p>
                   </div>
-                  <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <MapPin className="text-secondary mb-2" size={18} />
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-0.5">Location</p>
-                    <p className="text-sm text-white font-medium">{selectedEvent.location}</p>
+                  <div className="p-4 bg-surface-container rounded-2xl border border-stone-200">
+                    <MapPin className="text-primary mb-2" size={18} />
+                    <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-0.5">Location</p>
+                    <p className="text-sm text-secondary font-medium">{selectedEvent.location}</p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">About the Event</h4>
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">About the Event</h4>
                     <p className="text-sm text-on-surface-variant leading-relaxed whitespace-pre-line">
                       {selectedEvent.description || "Join us for an exclusive journey through the finest selection of rare whiskies. Experience depth of character and complex tasting notes in an intimate setting designed for true connoisseurs."}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3">What's Included</h4>
+                    <h4 className="text-[10px] font-bold text-stone-500 uppercase tracking-widest mb-3">What's Included</h4>
                     <ul className="space-y-2">
                       {['Premium Tasting Flight', 'Curated Charcuterie', 'Tasting Journal', 'Expert Guidance'].map((item) => (
                         <li key={item} className="flex items-center gap-3 text-sm text-on-surface-variant">
-                          <div className="w-1 h-1 bg-primary rounded-full" />
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                           {item}
                         </li>
                       ))}
@@ -462,14 +462,14 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                 </div>
               </div>
 
-              <div className="p-6 bg-surface-container border-t border-white/10 flex items-center justify-between gap-6">
+              <div className="p-6 bg-surface-container border-t border-stone-200 flex items-center justify-between gap-6">
                 <div>
-                  <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest leading-none mb-1">Single Entry</p>
-                  <p className="text-2xl font-serif text-white leading-none">
+                  <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest leading-none mb-1">Single Entry</p>
+                  <p className="text-2xl font-serif text-secondary font-semibold leading-none">
                     {selectedEvent.payfast_price ? `R ${(Number(selectedEvent.payfast_price) || 0).toFixed(2)}` : (selectedEvent.price || 'Complimentary')}
                   </p>
                   {selectedEvent.payfast_quantity !== undefined && selectedEvent.payfast_quantity !== null && (
-                    <span className="text-[9px] text-primary block mt-1 font-mono uppercase tracking-wider">
+                    <span className="text-[9px] text-primary block mt-1 font-mono uppercase tracking-wider font-bold">
                       {Number(selectedEvent.payfast_quantity) > 0 ? `${selectedEvent.payfast_quantity} tickets remaining` : 'SOLD OUT'}
                     </span>
                   )}
@@ -477,12 +477,12 @@ export default function EventsScreen({ clubId, user }: { clubId?: string | strin
                 <button 
                   onClick={() => setIsCheckoutOpen(true)}
                   disabled={selectedEvent.payfast_quantity !== undefined && selectedEvent.payfast_quantity !== null && Number(selectedEvent.payfast_quantity) <= 0}
-                  className="flex-1 bg-primary text-on-primary h-14 rounded-2xl font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform disabled:opacity-40 disabled:scale-100"
+                  className="flex-1 bg-primary text-secondary h-14 rounded-2xl font-extrabold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-xl shadow-primary/20 disabled:opacity-40 disabled:scale-100 disabled:shadow-none cursor-pointer"
                 >
                   <Ticket size={20} />
                   BOOK
                 </button>
-                <button className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white/60">
+                <button className="w-14 h-14 bg-white border border-stone-200 rounded-2xl flex items-center justify-center text-secondary hover:border-primary/40 transition-all cursor-pointer shadow-xs">
                   <Share2 size={20} />
                 </button>
               </div>

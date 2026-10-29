@@ -131,24 +131,24 @@ export default function ExploreClubsScreen({ user, onRefreshUserClubs }: Explore
           <Compass size={18} />
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] font-mono">DIRECTORY</p>
         </div>
-        <h2 className="text-3xl font-serif text-white tracking-wide">Explore Clubs</h2>
-        <p className="text-sm text-white/40 mt-1">Discover, join, and align with global elite clubs.</p>
+        <h2 className="text-3xl font-serif text-secondary tracking-wide font-semibold">Explore Clubs</h2>
+        <p className="text-sm text-on-surface-variant mt-1">Discover, join, and align with global elite clubs.</p>
       </div>
 
       {/* Search Input */}
       <div className="relative mb-8">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400" size={18} />
         <input 
           type="text" 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by city, name, or keywords..."
-          className="w-full h-12 bg-white/5 border border-white/10 rounded-xl pl-12 pr-6 outline-none text-white text-sm placeholder-white/20 focus:border-primary focus:bg-white/[0.08] transition-all"
+          className="w-full h-12 bg-surface-container border border-stone-200/80 rounded-xl pl-12 pr-6 outline-none text-on-surface text-sm placeholder-stone-400 focus:border-primary/70 focus:bg-white transition-all shadow-xs"
         />
         {searchQuery && (
           <button 
             onClick={() => setSearchQuery('')}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-white/40 hover:text-white"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-stone-400 hover:text-secondary cursor-pointer"
           >
             CLEAR
           </button>
@@ -156,9 +156,9 @@ export default function ExploreClubsScreen({ user, onRefreshUserClubs }: Explore
       </div>
 
       {loading ? (
-        <div className="flex flex-col items-center justify-center py-20 opacity-40">
-          <Loader2 className="animate-spin mb-4" size={32} />
-          <p className="text-[10px] uppercase tracking-[0.2em] font-bold font-mono">Scanning Channels...</p>
+        <div className="flex flex-col items-center justify-center py-20 opacity-60">
+          <Loader2 className="animate-spin mb-4 text-primary" size={32} />
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold font-mono text-stone-400">Scanning Channels...</p>
         </div>
       ) : (
         <div className="space-y-8">
@@ -190,13 +190,13 @@ export default function ExploreClubsScreen({ user, onRefreshUserClubs }: Explore
 
           {/* Discover New Clubs */}
           <div>
-            <h3 className="text-xs font-bold font-mono uppercase tracking-[0.15em] text-white/40 mb-4">
+            <h3 className="text-xs font-bold font-mono uppercase tracking-[0.15em] text-secondary/70 mb-4">
               {joinedClubs.length > 0 ? "Discover New Clubs" : "All Clubs"} ({discoverClubs.length})
             </h3>
             
             {discoverClubs.length === 0 ? (
-              <div className="rounded-xl border border-white/5 bg-white/[0.01] p-8 text-center">
-                <p className="text-xs text-white/30 italic">No additional clubs match your filter.</p>
+              <div className="rounded-2xl border border-stone-200 bg-surface-container p-8 text-center">
+                <p className="text-xs text-stone-400 italic">No additional clubs match your filter.</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -275,8 +275,8 @@ function ClubCard({
   return (
     <div 
       className={cn(
-        "bg-white/5 border rounded-2xl overflow-hidden transition-all duration-300 relative group",
-        isExpanded ? "border-primary/40 bg-white/[0.08]" : "border-white/10 hover:border-white/20"
+        "bg-surface border rounded-2xl overflow-hidden transition-all duration-300 relative group shadow-xs hover:shadow-md",
+        isExpanded ? "border-primary/50 shadow-md" : "border-stone-200/80 hover:border-primary/40"
       )}
     >
       <div 
@@ -288,34 +288,34 @@ function ClubCard({
             src={club.image} 
             alt={club.name} 
             referrerPolicy="no-referrer"
-            className="w-14 h-14 rounded-xl object-cover bg-black/40 border border-white/10 flex-shrink-0"
+            className="w-14 h-14 rounded-xl object-cover bg-stone-100 border border-stone-200 flex-shrink-0"
           />
         ) : (
-          <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-            <Compass className="text-primary" size={24} />
+          <div className="w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center flex-shrink-0 text-secondary">
+            <Compass className="text-secondary" size={24} />
           </div>
         )}
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <h4 className="text-base font-serif text-white font-medium truncate tracking-wide">
+            <h4 className="text-base font-serif text-secondary font-semibold truncate tracking-wide">
               {club.name}
             </h4>
             {isMember && (
-              <span className="text-[8px] font-bold font-mono px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary uppercase tracking-widest flex items-center gap-1">
-                <Check size={8} strokeWidth={3} className="text-primary" />
+              <span className="text-[8px] font-bold font-mono px-2 py-0.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary uppercase tracking-widest flex items-center gap-1">
+                <Check size={8} strokeWidth={3} className="text-secondary" />
                 Joined
               </span>
             )}
             {isPrimary && (
-              <span className="text-[8px] font-bold font-mono px-2 py-0.5 rounded-full bg-[#c9a96e]/20 border border-[#c9a96e]/30 text-[#e0c48f] uppercase tracking-widest">
+              <span className="text-[8px] font-bold font-mono px-2 py-0.5 rounded-full bg-primary/20 border border-primary/40 text-secondary uppercase tracking-widest">
                 Home
               </span>
             )}
           </div>
           
-          <div className="flex items-center gap-1.5 text-white/40 text-xs mt-1 font-sans">
-            <MapPin size={12} className="text-white/30 flex-shrink-0" />
+          <div className="flex items-center gap-1.5 text-stone-500 text-xs mt-1 font-sans">
+            <MapPin size={12} className="text-primary flex-shrink-0" />
             <span className="truncate uppercase font-mono tracking-wider text-[9px]">
               {club.location || 'GLOBAL EXPANSION'}
             </span>
@@ -324,7 +324,7 @@ function ClubCard({
 
         <button 
           type="button"
-          className="self-center p-2 text-white/30 hover:text-white transition-colors"
+          className="self-center p-2 text-stone-400 hover:text-secondary transition-colors cursor-pointer"
         >
           <ChevronRight 
             size={18} 
@@ -342,23 +342,23 @@ function ClubCard({
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 pt-1 border-t border-white/5 space-y-4">
-              <p className="text-xs text-white/60 leading-relaxed font-sans">
+            <div className="px-5 pb-5 pt-1 border-t border-stone-200/80 space-y-4">
+              <p className="text-xs text-on-surface-variant leading-relaxed font-sans">
                 {club.description || "An ultra-exclusive enclave for master distillers and discerning connoisseurs alike. Indulge in private cellar events, custom private label allocations, and refined luxury."}
               </p>
 
               <div className="flex items-center justify-between pt-2">
-                <span className="text-[10px] text-white/30 uppercase tracking-widest font-mono">
+                <span className="text-[10px] text-stone-400 uppercase tracking-widest font-mono">
                   Club ID: {club.id}
                 </span>
 
                 {joining ? (
-                  <div className="flex items-center gap-2 text-primary opacity-60">
+                  <div className="flex items-center gap-2 text-primary opacity-80">
                     <Loader2 className="animate-spin" size={14} />
                     <span className="text-[10px] font-mono uppercase tracking-widest">Processing...</span>
                   </div>
                 ) : alreadyPaid ? (
-                  <span className="text-[11px] font-semibold text-primary flex items-center gap-1.5 uppercase bg-primary/10 border border-primary/20 px-3 py-1 rounded-full tracking-wider">
+                  <span className="text-[11px] font-bold text-secondary flex items-center gap-1.5 uppercase bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full tracking-wider">
                     ✓ Member
                   </span>
                 ) : (
@@ -368,7 +368,7 @@ function ClubCard({
                       e.stopPropagation();
                       onJoin();
                     }}
-                    className="h-8 px-4 bg-primary text-black font-mono text-[9px] font-bold rounded-lg hover:bg-primary-hover active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+                    className="h-8 px-4 bg-primary text-secondary font-mono text-[9px] font-extrabold rounded-lg hover:bg-primary/90 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
                   >
                     <Plus size={12} strokeWidth={3} />
                     JOIN CLUB
