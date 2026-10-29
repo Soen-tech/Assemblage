@@ -157,17 +157,16 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
           autoPlay 
           muted 
           playsInline
-          loop
-          className="w-full h-full object-cover opacity-60 scale-105 transition-transform duration-1000"
+          className="w-full h-full object-cover opacity-80 scale-105 transition-transform duration-1000"
           poster="https://images.unsplash.com/photo-1527281480658-198cb28a1db0?auto=format&fit=crop&q=80&w=1200"
         >
           <source src="/login-bg.mp4" type="video/mp4" />
           <source src="/background.mp4" type="video/mp4" />
           <source src="/video.mp4" type="video/mp4" />
         </video>
-        {/* Dark cinematic vignette overlays so video remains visible while preserving contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.65)_100%)]" />
+        {/* Shading lightened by 50% so background video shines through cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/40" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.32)_100%)]" />
       </div>
 
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 sm:px-8 py-16 text-center max-w-lg mx-auto w-full">
@@ -198,7 +197,7 @@ export default function LandingPage({ onLogin, pendingEventPreview, pendingBouti
 
           <button 
             onClick={() => setShowSubscription(true)}
-            className="w-full h-16 bg-white/10 hover:bg-white/20 text-[#FAF4E5] backdrop-blur-md rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 border border-white/20 hover:border-primary/60 group cursor-pointer"
+            className="w-full h-16 bg-[#123826]/60 hover:bg-[#123826]/80 text-[#FAF4E5] backdrop-blur-md rounded-full font-bold flex items-center justify-center gap-3 transition-all duration-300 active:scale-95 border border-[#123826]/80 hover:border-primary/60 group cursor-pointer shadow-lg shadow-black/20"
             id="member-cta"
           >
             <UserPlus size={20} className="text-primary group-hover:scale-110 transition-transform" />

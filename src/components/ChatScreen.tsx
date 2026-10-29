@@ -16,7 +16,7 @@ export default function ChatScreen({ user, onTeaserLimit }: ChatScreenProps) {
     {
       id: '1',
       role: 'assistant',
-      content: "Good evening, Connoisseur. I am STEVE, your concierge, trained on the heritage of the Highlands and the precision of the glass. How may I assist your palate tonight?",
+      content: "Good evening, Connoisseur. I am your concierge, trained on the heritage of the Highlands and the precision of the glass. How may I assist your palate tonight?",
       timestamp: new Date()
     }
   ]);

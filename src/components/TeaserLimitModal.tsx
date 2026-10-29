@@ -162,7 +162,7 @@ export default function TeaserLimitModal({ isOpen, onClose, type, onUpgrade }: T
                 <p className="text-sm text-on-surface-variant leading-relaxed mb-8 max-w-sm mx-auto font-normal">
                   {type === 'scan' 
                     ? "You have used your 3 free bottle scans. Register a formal account to enjoy infinite label scanning, cellar tracking, and direct curation."
-                    : "You have used your 3 free sommelier messages. Register a formal account to secure unlimited queries with STEVE, our elite AI spirits advisor."}
+                    : "You have used your 3 free sommelier messages. Register a formal account to secure unlimited queries with our elite AI spirits concierge."}
                 </p>
 
                 {/* Benefits List */}
@@ -183,7 +183,7 @@ export default function TeaserLimitModal({ isOpen, onClose, type, onUpgrade }: T
                     </div>
                     <div>
                       <h4 className="text-xs font-bold text-secondary uppercase tracking-wider">Premium AI Sommelier</h4>
-                      <p className="text-[11px] text-stone-600 mt-0.5 leading-normal">Enjoy detailed tasting pairings, finish notes, and live advice from STEVE.</p>
+                      <p className="text-[11px] text-stone-600 mt-0.5 leading-normal">Enjoy detailed tasting pairings, finish notes, and live advice from your personal concierge.</p>
                     </div>
                   </div>
 
